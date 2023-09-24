@@ -1,15 +1,10 @@
-import Header from "./components/Header";
-
+import Header from './components/Header';
+import React from 'react';
 const App = () => (
     <div className="App">
         <h1>Hello</h1>
         <Header />
     </div>
 );
-
-
-function test() {
-    return 0;
-}
 
 export default App;
