@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 //
 import GlobalStyles from "@/components/GlobalStyles";
-
-import Button from "react-bootstrap/Button";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -15,14 +15,14 @@ import reportWebVitals from "./reportWebVitals";
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(
-        <React.StrictMode>
-            <GlobalStyles>
-                <App />
-            </GlobalStyles>
-        </React.StrictMode>,
-    );
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <GlobalStyles>
+        <App />
+      </GlobalStyles>
+    </React.StrictMode>
+  );
 }
 
 // If you want to start measuring performance in your app, pass a function

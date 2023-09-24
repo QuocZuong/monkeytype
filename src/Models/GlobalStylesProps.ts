@@ -1,5 +1,11 @@
 import { ReactNode } from "react";
 
-export interface GlobalStylesProps {
-    children?: ReactNode;
-}
+/**
+ *
+ */
+export type GlobalStylesProps = {
+  /**
+   *
+   */
+  children?: ReactNode;
+};
