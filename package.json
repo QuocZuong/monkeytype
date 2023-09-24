@@ -47,14 +47,14 @@
         "react-bootstrap": "^2.8.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.15.0",
-        "react-scripts": "^5.0.1",
+        "react-scripts": "^2.1.3",
         "typescript-plugin-css-modules": "^5.0.1",
         "web-vitals": "^2.1.4"
     },
     "devDependencies": {
         "@tim-w-james/eslint-config": "^2.2.0",
-        "@typescript-eslint/eslint-plugin": "^5.62.0",
-        "@typescript-eslint/parser": "^5.62.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.2",
+        "@typescript-eslint/parser": "^6.7.2",
         "babel-plugin-module-resolver": "^5.0.0",
         "customize-cra": "^1.0.0",
         "eslint": "^8.50.0",

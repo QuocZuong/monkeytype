@@ -7,4 +7,9 @@ const App = () => (
     </div>
 );
 
+
+function test() {
+    return 0;
+}
+
 export default App;
