@@ -1,5 +1,5 @@
-import { override, useBabelRc } from "customize-cra";
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
+const { override, useBabelRc } = require("customize-cra");
 
-export default override(
-    useBabelRc(),
-);
+module.exports = override(useBabelRc());
