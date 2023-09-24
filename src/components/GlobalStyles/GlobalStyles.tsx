@@ -3,7 +3,6 @@ import "./GlobalStyles.scss";
 import React from "react";
 
 import { GlobalStylesProps } from "@/Models/GlobalStylesProps";
-
 /**
  * Global styles
  * @param {ReactNode} children  hihi
