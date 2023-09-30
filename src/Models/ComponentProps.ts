@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
-export type GlobalStylesProps = {
+export interface ComponentProps {
     children?: ReactNode;
-};
+    className?: string;
+}

@@ -1,4 +1,5 @@
 declare module "*.scss" {
-    const content: { [key: string]: unknown };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const content: { [key: string]: any };
     export = content;
 }
