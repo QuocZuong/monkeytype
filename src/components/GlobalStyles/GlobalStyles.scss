@@ -19,10 +19,12 @@ html {
 
 body {
     // font-family: "IBM Plex Sans", sans-serif;
+    color: var(--text-color);
     font-family: "Roboto Mono", monospace;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    background-color: var(--bg-color);
 }
 
 *,
@@ -64,6 +66,10 @@ h4,
 h5,
 h6 {
     overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
 }
 
 #root,

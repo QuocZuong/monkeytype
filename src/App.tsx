@@ -1,7 +1,7 @@
+import React, { ComponentType, Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./routes/routes";
 
-import React, { ComponentType, Fragment } from "react";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import { LayoutProps } from "./Models/LayoutProps";
 
