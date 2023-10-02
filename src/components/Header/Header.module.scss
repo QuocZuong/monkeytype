@@ -21,28 +21,42 @@
     display: flex;
     height: 3.6rem;
 
-    a + a {
+    .link + .link {
         margin-left: 3.5rem;
+    }
+
+    .link {
+        padding: 0 0.5rem;
+        color: var(--sub-color);
+        transition: background 0.125s, color 0.125s, opacity 0.125s;
+        :hover {
+            color: var(--text-color);
+        }
     }
 
     a {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--sub-color);
+    }
 
-        :hover {
-            color: var(--text-color);
-        }
+    button {
+        background-color: transparent;
+        outline: none;
+        border: none;
     }
 
     .logo-link {
         height: 3.6rem;
         width: 35rem;
+        margin-right: 3.5rem;
     }
 }
 
 .user-info {
+    margin-right: 3.5rem;
+    color: var(--sub-color);
+
     div {
         margin: 0 5px;
     }
@@ -55,8 +69,14 @@
     }
 }
 
-.user-info:hover i,
-.username,
-.level {
+.user-info:hover .username {
     color: var(--text-color);
+}
+
+.user-info:hover i {
+    color: var(--text-color);
+}
+
+.user-info:hover .level {
+    background-color: var(--text-color);
 }

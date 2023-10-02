@@ -26,22 +26,22 @@ const Header = () => {
                         <Link to={config.routeLinks.home} className={cx("logo-link")}>
                             <img src={images.mtfulllogo} alt="logo" />
                         </Link>
-                        <Link to={config.routeLinks.home}>
+                        <Link to={config.routeLinks.home} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faKeyboard} size="lg" />
                             </i>
                         </Link>
-                        <Link to={config.routeLinks.home}>
+                        <button className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faCrown} size="lg" />
                             </i>
-                        </Link>
-                        <Link to={config.routeLinks.home}>
+                        </button>
+                        <Link to={config.routeLinks.about} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faInfo} size="lg" />
                             </i>
                         </Link>
-                        <Link to={config.routeLinks.home}>
+                        <Link to={config.routeLinks.setting} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faGear} size="lg" />
                             </i>
@@ -50,7 +50,7 @@ const Header = () => {
                 </Col>
                 <Col className={cx("right")}>
                     <div className={cx("col-wrapper")}>
-                        <Link to={config.routeLinks.home} className={cx("user-info")}>
+                        <Link to={config.routeLinks.profile} className={cx("user-info")}>
                             <i>
                                 <FontAwesomeIcon icon={faUser} size="lg" />
                             </i>
@@ -63,19 +63,19 @@ const Header = () => {
                                 </>
                             )}
                         </Link>
-                        <Link to={config.routeLinks.home}>
+                        <button className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faBell} size="lg" />
                             </i>
-                        </Link>
+                        </button>
 
                         {/* Check if user logged or not to show icon*/}
                         {isLogged && (
-                            <Link to={config.routeLinks.home}>
+                            <button className={cx("link")}>
                                 <i>
                                     <FontAwesomeIcon icon={faSignOut} size="lg" />
                                 </i>
-                            </Link>
+                            </button>
                         )}
                     </div>
                 </Col>
