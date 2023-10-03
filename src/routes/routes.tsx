@@ -1,7 +1,7 @@
 // Layout
 import MainLayout from "@/layouts/MainLayout/MainLayout";
 import Home from "@/page/Home";
-import config from "@/config/config";
+import config from "@/config";
 import { RouteProps } from "@/Models/RouteProps";
 import About from "@/page/About";
 import Setting from "@/page/Setting";

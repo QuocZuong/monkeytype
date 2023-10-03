@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCrown, faGear, faInfo, faKeyboard, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 
-import config from "@/config/config";
+import config from "@/config";
 import images from "@/assets/images";
 import styles from "./Header.module.scss";
 
