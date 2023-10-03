@@ -1,18 +1,23 @@
 import { Request, Response } from "express";
+import express from "express"
 
-const express = require('express');
+import uDao from "~/src/DAO/UserDao";
+import User from "./Model/User";
 
 const app = express();
-app.listen(3001);
+// const uDao = new uDao();
+
+app.listen(50000);
+
 // app.use('/', routes)
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", async (req: Request, res: Response) => {
   console.log("Got a request on /");
 
-  res.json(
-    {
-      user: "username",
-      password: "password"
-    }
-  );
+  await uDao.createUser(new User("Heo", "HeoMap"));
+  let result = await uDao.getAllUser();
+
+  console.log(`result from query: ${result}`);
+
+  res.json(result);
 });

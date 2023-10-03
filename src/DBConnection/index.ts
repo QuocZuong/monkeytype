@@ -1,2 +1,2 @@
-import functions from "./connection";
+import functions from "./Connection";
 export default functions;
