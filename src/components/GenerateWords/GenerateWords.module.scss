@@ -1,0 +1,20 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: var(--sub-color);
+    font-size: var(--test-font-size);
+    width: 150rem;
+    height: 100%;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    cursor: default;
+}
+
+.output {
+    position: absolute;
+    top: 0;
+    width: 150rem;
+    height: 5rem;
+}

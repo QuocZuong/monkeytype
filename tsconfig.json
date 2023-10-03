@@ -108,6 +108,7 @@
         "jsx": "react-jsx",
         "plugins": [{ "name": "typescript-plugin-css-modules" }],
         "baseUrl": ".",
+        "moduleResolution": "Node",
         "paths": {
             "@/*": ["src/*"]
         }

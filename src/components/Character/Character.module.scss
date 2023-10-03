@@ -1,0 +1,9 @@
+.correct {
+    color: var(--text-color);
+}
+.wrong {
+    color: var(--error-color);
+}
+.wrong-space {
+    background-color: var(--error-extra-color);
+}

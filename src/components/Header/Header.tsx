@@ -26,22 +26,22 @@ const Header = () => {
                         <Link to={config.routeLinks.home} className={cx("logo-link")}>
                             <img src={images.mtfulllogo} alt="logo" />
                         </Link>
-                        <Link to={config.routeLinks.home} className={cx("link")}>
+                        <Link title="start test" to={config.routeLinks.home} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faKeyboard} size="lg" />
                             </i>
                         </Link>
-                        <button className={cx("link")}>
+                        <button title="leaderboard" className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faCrown} size="lg" />
                             </i>
                         </button>
-                        <Link to={config.routeLinks.about} className={cx("link")}>
+                        <Link title="about" to={config.routeLinks.about} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faInfo} size="lg" />
                             </i>
                         </Link>
-                        <Link to={config.routeLinks.setting} className={cx("link")}>
+                        <Link title="settings" to={config.routeLinks.setting} className={cx("link")}>
                             <i>
                                 <FontAwesomeIcon icon={faGear} size="lg" />
                             </i>
