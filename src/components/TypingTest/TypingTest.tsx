@@ -95,7 +95,12 @@ const TypingTest = () => {
                     <span>english</span>
                 </button>
                 <div className={cx("main")}>
-                    <GenerateWords userInput={userInput}></GenerateWords>
+                    <GenerateWords
+                        userInput={userInput}
+                        hasNumber={true}
+                        hasPunctuation={true}
+                        length={25}
+                    ></GenerateWords>
                     <UserInput setUserInput={setUserInput}></UserInput>
                 </div>
                 <button tabIndex={1}>
