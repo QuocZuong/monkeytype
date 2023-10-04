@@ -1,5 +1,5 @@
-import DBConnection from "~/src/DBConnection";
-import User from "~/src/Model/User";
+import DBConnection from "../DBConnection";
+import User from "../Model/User";
 import { Collection, Db, MongoClient } from "mongodb"
 
 class UserDao {

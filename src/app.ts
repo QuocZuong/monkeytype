@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import express from "express"
 
-import uDao from "~/src/DAO/UserDao";
+import uDao from "./DAO/UserDao";
 import User from "./Model/User";
 
 const app = express();
@@ -14,7 +14,7 @@ app.listen(50000);
 app.get("/", async (req: Request, res: Response) => {
   console.log("Got a request on /");
 
-  await uDao.createUser(new User("Heo", "HeoMap"));
+  // await uDao.createUser(new User("Heo", "HeoMap"));
   let result = await uDao.getAllUser();
 
   console.log(`result from query: ${result}`);
