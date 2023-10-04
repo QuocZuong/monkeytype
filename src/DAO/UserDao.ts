@@ -1,7 +1,6 @@
 import DBConnection from "../DBConnection";
 import User from "../Model/User";
-import { Collection, Db, MongoClient, ObjectId } from "mongodb"
-import { fileURLToPath } from "url";
+import { Collection, Db, ObjectId } from "mongodb"
 
 let database: Db | undefined;
 let collection: Collection | undefined;

@@ -3,7 +3,6 @@ import User from "../Model/User";
 import { Collection, Db, MongoClient } from "mongodb"
 
 class UserDao {
-  private conn: MongoClient | undefined;
   private database: Db | undefined;
   private collection: Collection | undefined;
 
