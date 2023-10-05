@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/monkeytype/static/css/main.59bae861.css",
-    "main.js": "/monkeytype/static/js/main.60f168d5.js",
+    "main.js": "/monkeytype/static/js/main.68ea7937.js",
     "static/js/787.45b7776a.chunk.js": "/monkeytype/static/js/787.45b7776a.chunk.js",
     "static/media/mtfulllogo.png": "/monkeytype/static/media/mtfulllogo.bbd998e4eaf4fd6f95ba.png",
     "index.html": "/monkeytype/index.html",
     "static/media/logo.svg": "/monkeytype/static/media/logo.6e6991162f6c37eab0f3e3afeb5cb4bb.svg",
     "main.59bae861.css.map": "/monkeytype/static/css/main.59bae861.css.map",
-    "main.60f168d5.js.map": "/monkeytype/static/js/main.60f168d5.js.map",
+    "main.68ea7937.js.map": "/monkeytype/static/js/main.68ea7937.js.map",
     "787.45b7776a.chunk.js.map": "/monkeytype/static/js/787.45b7776a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.59bae861.css",
-    "static/js/main.60f168d5.js"
+    "static/js/main.68ea7937.js"
   ]
 }
