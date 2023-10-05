@@ -8,13 +8,16 @@
     bottom: 0;
     text-align: left;
     word-wrap: break-word;
-    word-break: break-all;
+    word-break: normal;
     cursor: default;
     background-color: transparent;
     outline: none;
     border: none;
     resize: none;
     overflow: hidden;
+    -webkit-user-select: none; /* Disable text selection on WebKit browsers */
+    -moz-user-select: none; /* Disable text selection on Mozilla Firefox */
+    user-select: none;
 }
 
 .output {

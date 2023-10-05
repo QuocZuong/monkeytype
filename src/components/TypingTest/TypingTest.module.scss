@@ -55,10 +55,16 @@
 
 .test-typing {
     margin: 8rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 1.6rem;
-        width: 100%;
+        width: fit-content;
         height: 3.6rem;
         color: var(--sub-color);
         outline: none;
@@ -69,9 +75,11 @@
             margin: 2rem;
         }
     }
+
     button:hover {
         color: var(--text-color);
     }
+
     .main {
         position: relative;
         color: var(--sub-color);
@@ -80,5 +88,9 @@
         min-height: 5rem;
         margin: 5rem 0;
         cursor: default;
+    }
+
+    .reload-btn {
+        padding: 4rem;
     }
 }

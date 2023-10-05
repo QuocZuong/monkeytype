@@ -36,8 +36,6 @@ const UserInput = ({ words }: { words: string }) => {
 
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
-    console.log(userInput);
-
     useEffect(() => {
         const onClickKeyboard = () => textAreaRef?.current?.focus();
 

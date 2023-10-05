@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,13 +29,16 @@ const TypingTest = () => {
     const [hasPunctuation] = useGlobalState("hasPunctuation");
     const [hasNumber] = useGlobalState("hasNumber");
     const [length] = useGlobalState("length");
+    const [isReload, setReload] = useState<boolean>(false);
 
     const randomWords = fakerGeneratorCustom(length, hasPunctuation, hasNumber);
 
     const punctuationClasses = cx("text-btn", hasPunctuation && "active");
     const numberClasses = cx("text-btn", hasNumber && "active");
 
-    console.log("home rerender");
+    const handleReload = () => {
+        setReload(!isReload);
+    };
 
     return (
         <div className={cx("wrapper")}>
@@ -111,7 +114,7 @@ const TypingTest = () => {
                 </Col>
             </Row>
             <Row className={cx("test-typing")}>
-                <button>
+                <button className={cx("change-source-btn")}>
                     <i>
                         <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
                     </i>
@@ -121,7 +124,7 @@ const TypingTest = () => {
                     <GenerateWords words={randomWords}></GenerateWords>
                     <UserInput words={randomWords}></UserInput>
                 </div>
-                <button tabIndex={1}>
+                <button className={cx("reload-btn")} onClick={handleReload}>
                     <FontAwesomeIcon icon={faRedo} size="xl"></FontAwesomeIcon>
                 </button>
             </Row>
