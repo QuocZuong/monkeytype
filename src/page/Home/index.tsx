@@ -1,11 +1,10 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import TypingTest from "@/components/TypingTest";
 const Home = () => {
     return (
-        <Container fluid>
+        <div className="home-page">
             <TypingTest />
-        </Container>
+        </div>
     );
 };
 
