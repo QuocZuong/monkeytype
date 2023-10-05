@@ -1,6 +1,6 @@
 import DBConnection from "../DBConnection";
 import User from "../Model/User";
-import { Collection, Db, MongoClient } from "mongodb"
+import { Collection, Db } from "mongodb"
 
 class UserDao {
   private database: Db | undefined;
