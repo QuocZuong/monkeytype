@@ -1,5 +1,7 @@
 # MonkeyType Clone Project
 
+# [See it here 👀](https://quoczuong.github.io/monkeytype/)
+
 MonkeyType Clone Project is an educational project that replicates the functionality of the popular [MonkeyType](https://monkeytype.com) typing speed test platform. It is built using React and TypeScript and serves as a learning exercise to understand web development concepts, React components, and TypeScript.
 
 ## Project Overview

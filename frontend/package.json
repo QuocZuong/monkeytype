@@ -2,8 +2,11 @@
     "name": "monkeytype",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://quoczuong.github.io/monkeytype/",
     "scripts": {
         "build": "react-app-rewired build",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "eject": "react-app-rewired eject",
         "start": "react-app-rewired start",
         "test": "react-app-rewired test"
