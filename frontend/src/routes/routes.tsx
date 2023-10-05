@@ -7,6 +7,7 @@ import About from "@/page/About";
 import Setting from "@/page/Setting";
 import Profile from "@/page/Profile";
 import Login from "@/page/Login";
+import UndefinedPage from "@/page/404";
 
 // include routes need login and don't need
 const routes: Array<RouteProps> = [
@@ -33,6 +34,11 @@ const routes: Array<RouteProps> = [
     {
         path: config.routeLinks.login,
         component: Login,
+        layout: MainLayout,
+    },
+    {
+        path: config.routeLinks.undefined,
+        component: UndefinedPage,
         layout: MainLayout,
     },
 ];

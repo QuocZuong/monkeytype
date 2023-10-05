@@ -41,7 +41,7 @@ const UserDao = {
     const userInfo = {
       username: user.getUsername()
     }
-
+    
     const result = collection?.deleteOne(userInfo);
     return result;
   },

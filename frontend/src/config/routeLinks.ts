@@ -1,9 +1,10 @@
 const routeLinks = {
     home: "/",
-    profile: "/:nickname",
+    profile: "/account",
     about: "/about",
     setting: "/setting",
     login: "/login",
+    undefined: "/*",
 };
 
 export default routeLinks;
