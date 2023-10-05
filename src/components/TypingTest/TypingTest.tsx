@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col } from "react-bootstrap";
-
-import styles from "./TypingTest.module.scss";
-import GenerateWords from "../GenerateWords";
-
+import { setGlobalState, useGlobalState } from "@/typingState";
 import {
     faAt,
     faClock,
@@ -18,23 +16,48 @@ import {
     faTools,
     faWrench,
 } from "@fortawesome/free-solid-svg-icons";
+
+import styles from "./TypingTest.module.scss";
+import GenerateWords from "../GenerateWords";
+
 import UserInput from "../UserInput";
+import { fakerGeneratorCustom } from "@/util/generateWords";
 
 const cx = classNames.bind(styles);
 
 const TypingTest = () => {
-    const [userInput, setUserInput] = useState<string>("");
+    const [hasPunctuation] = useGlobalState("hasPunctuation");
+    const [hasNumber] = useGlobalState("hasNumber");
+    const [length] = useGlobalState("length");
+
+    const randomWords = fakerGeneratorCustom(length, hasPunctuation, hasNumber);
+
+    const punctuationClasses = cx("text-btn", hasPunctuation && "active");
+    const numberClasses = cx("text-btn", hasNumber && "active");
+
+    console.log("home rerender");
+
     return (
         <div className={cx("wrapper")}>
             <Row className={cx("test-config")}>
                 <Col xs sm={3} className={cx("col")}>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={cx(punctuationClasses)}
+                        onClick={() => {
+                            setGlobalState("hasPunctuation", !hasPunctuation);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faAt}></FontAwesomeIcon>
                         </i>
                         punctuation
                     </button>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={numberClasses}
+                        onClick={() => {
+                            setGlobalState("hasNumber", !hasNumber);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faHashtag}></FontAwesomeIcon>
                         </i>
@@ -95,13 +118,8 @@ const TypingTest = () => {
                     <span>english</span>
                 </button>
                 <div className={cx("main")}>
-                    <GenerateWords
-                        userInput={userInput}
-                        hasNumber={true}
-                        hasPunctuation={true}
-                        length={25}
-                    ></GenerateWords>
-                    <UserInput setUserInput={setUserInput}></UserInput>
+                    <GenerateWords words={randomWords}></GenerateWords>
+                    <UserInput words={randomWords}></UserInput>
                 </div>
                 <button tabIndex={1}>
                     <FontAwesomeIcon icon={faRedo} size="xl"></FontAwesomeIcon>

@@ -37,11 +37,15 @@
     background-color: transparent;
     outline: none;
     border: none;
-
+    transition: color 0.3s;
     i {
         width: 1.5rem;
         margin: 0 10px;
     }
+}
+
+.text-btn.active {
+    color: var(--main-color);
 }
 
 .text-btn:hover {

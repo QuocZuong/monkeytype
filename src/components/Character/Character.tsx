@@ -13,8 +13,6 @@ const Character = ({ key, children, userInput, expectInput }: CharacterProps) =>
         status = "wrong-space";
     }
 
-    console.log("status: " + status);
-
     const classes = cx("character", status);
     return (
         <span className={classes} key={key}>
