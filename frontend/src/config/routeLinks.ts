@@ -1,10 +1,10 @@
 const routeLinks = {
-    home: "/",
-    profile: "/account",
-    about: "/about",
-    setting: "/setting",
-    login: "/login",
-    undefined: "/*",
+    home: "/monkeytype/",
+    profile: "/monkeytype/account",
+    about: "/monkeytype/about",
+    setting: "/monkeytype/setting",
+    login: "/monkeytype/login",
+    undefined: "/monkeytype/*",
 };
 
 export default routeLinks;
