@@ -15,9 +15,12 @@
     border: none;
     resize: none;
     overflow: hidden;
-    -webkit-user-select: none; /* Disable text selection on WebKit browsers */
-    -moz-user-select: none; /* Disable text selection on Mozilla Firefox */
     user-select: none;
+    pointer-events: none;
+}
+
+.user-typing::selection {
+    background-color: transparent;
 }
 
 .output {

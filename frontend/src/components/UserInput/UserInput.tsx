@@ -54,6 +54,12 @@ const UserInput = ({
         };
     });
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.ctrlKey || event.metaKey) {
+            event.preventDefault();
+        }
+    };
+
     useEffect(() => {
         if (isReload) {
             setUserInput("");
@@ -67,10 +73,14 @@ const UserInput = ({
     return (
         <>
             <textarea
+                onCopy={(e) => e.preventDefault()}
+                onCut={(e) => e.preventDefault()}
+                onPaste={(e) => e.preventDefault()}
                 ref={textAreaRef}
                 onChange={(event) => {
                     setUserInput(event.target.value);
                 }}
+                onKeyDown={handleKeyDown}
                 className={cx("user-typing")}
             ></textarea>
             <div className={cx("output")}>{output}</div>
