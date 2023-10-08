@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 150rem;
+    width: 120rem;
     padding: 5rem 0;
 }
 
@@ -84,13 +84,20 @@
         position: relative;
         color: var(--sub-color);
         font-size: var(--test-font-size);
-        width: 150rem;
+        width: 120rem;
         min-height: 5rem;
         margin: 5rem 0;
         cursor: default;
     }
 
     .reload-btn {
-        padding: 4rem;
+        padding: 3.5rem 4rem;
     }
+}
+
+.reload-btn:focus-visible {
+    border-radius: 15px;
+    box-shadow: 0 0 0 0.2rem var(--text-color);
+    outline: none;
+    color: var(--text-color);
 }
