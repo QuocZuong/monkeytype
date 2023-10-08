@@ -28,7 +28,15 @@ const generateCharacters = (userInput: Array<string>, words: string) => {
     );
 };
 
-const UserInput = ({ words }: { words: string }) => {
+const UserInput = ({
+    words,
+    isReload,
+    setReload,
+}: {
+    words: string;
+    isReload: boolean;
+    setReload: (isReload: boolean) => void;
+}) => {
     const [userInput, setUserInput] = useState<string>("");
 
     const typedCharacter = userInput.split("");
@@ -45,6 +53,16 @@ const UserInput = ({ words }: { words: string }) => {
             window.removeEventListener("keypress", onClickKeyboard);
         };
     });
+
+    useEffect(() => {
+        if (isReload) {
+            setUserInput("");
+            setReload(false);
+            if (textAreaRef.current) {
+                textAreaRef.current.value = "";
+            }
+        }
+    }, [isReload, setReload]);
 
     return (
         <>
