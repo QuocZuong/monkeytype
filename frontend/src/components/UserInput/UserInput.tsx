@@ -46,9 +46,9 @@ const UserInput = ({
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.ctrlKey || event.metaKey) {
-            if (event.key === "c" || event.key === "v") {
+            if (event.key === "c" || event.key === "v" || event.key === "x" || event.key === "a") {
                 event.preventDefault();
-            } 
+            }
         }
     };
 
@@ -61,7 +61,6 @@ const UserInput = ({
             window.removeEventListener("keypress", onClickKeyboard);
         };
     });
-
 
     useEffect(() => {
         if (isReload) {
