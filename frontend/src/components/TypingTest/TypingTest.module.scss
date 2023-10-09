@@ -38,19 +38,24 @@
     background-color: transparent;
     outline: none;
     border: none;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
+
     i {
         width: 1.5rem;
         margin: 0 10px;
     }
-}
 
-.text-btn.active {
-    color: var(--main-color);
-}
+    &:hover {
+        color: var(--text-color);
+    }
 
-.text-btn:hover {
-    color: var(--text-color);
+    &:active {
+        opacity: 0;
+    }
+
+    &.active {
+        color: var(--main-color);
+    }
 }
 
 .test-typing {
@@ -74,10 +79,10 @@
         i {
             margin: 2rem;
         }
-    }
 
-    button:hover {
-        color: var(--text-color);
+        &:hover {
+            color: var(--text-color);
+        }
     }
 
     .main {
