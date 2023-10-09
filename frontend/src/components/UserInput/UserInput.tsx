@@ -44,6 +44,14 @@ const UserInput = ({
 
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.ctrlKey || event.metaKey) {
+            if (event.key === "c" || event.key === "v") {
+                event.preventDefault();
+            } 
+        }
+    };
+
     useEffect(() => {
         const onClickKeyboard = () => textAreaRef?.current?.focus();
 
@@ -54,11 +62,6 @@ const UserInput = ({
         };
     });
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.ctrlKey || event.metaKey) {
-            event.preventDefault();
-        }
-    };
 
     useEffect(() => {
         if (isReload) {
