@@ -79,6 +79,7 @@
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "eslint-plugin-sonarjs": "^0.16.0",
         "eslint-plugin-tsdoc": "^0.2.17",
+        "@babel/plugin-proposal-private-property-in-object": "7.21.0",
         "prettier": "^2.8.8",
         "prettier-plugin-packagejson": "^2.4.5",
         "react-app-rewired": "^2.2.1",

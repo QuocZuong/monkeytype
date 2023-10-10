@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 const Character = ({ children, userInput, expectInput }: CharacterProps) => {
     let status = userInput !== expectInput ? "wrong" : "correct";
 
-    if (userInput !== " " && expectInput === " ") {
+    if (expectInput === " " && userInput !== " ") {
         status = "wrong-space";
     }
 
