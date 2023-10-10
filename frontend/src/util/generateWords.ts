@@ -51,7 +51,7 @@ function addNumber(fakerString: string) {
  * @param {boolean} hasNumber generate with number with 7% probability of appearing
  * @returns {string} return a string generated from FakerJS
  */
-export function fakerGeneratorCustom(length: unknown, hasPunctuation: unknown, hasNumber: unknown) {
+export function fakerGeneratorCustom(length: number, hasPunctuation: boolean, hasNumber: boolean) {
     let result = "";
     let temp = "";
 
