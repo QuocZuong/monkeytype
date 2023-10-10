@@ -1,7 +1,8 @@
 .wrapper {
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: left;
     color: var(--sub-color);
     font-size: var(--test-font-size);
     width: 120rem;
@@ -10,4 +11,18 @@
     word-wrap: break-word;
     word-break: normal;
     cursor: default;
+
+    .word {
+        margin-right: 2.15rem;
+    }
+
+    .correct {
+        color: var(--text-color);
+    }
+    .wrong {
+        color: var(--error-color);
+    }
+    .wrong-space {
+        background-color: var(--error-extra-color);
+    }
 }

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
 import styles from "./UserInput.module.scss";
 import Caret from "../Caret";
 import Character from "../Character";
+import { setGlobalState, useGlobalState } from "@/typingState";
 
 const cx = classNames.bind(styles);
 
@@ -65,6 +67,7 @@ const UserInput = ({
     useEffect(() => {
         if (isReload) {
             setUserInput("");
+            setGlobalState("userInput", "");
             setReload(false);
             if (textAreaRef.current) {
                 textAreaRef.current.value = "";
@@ -81,11 +84,14 @@ const UserInput = ({
                 ref={textAreaRef}
                 onChange={(event) => {
                     setUserInput(event.target.value);
+                    setGlobalState("userInput", event.target.value);
                 }}
                 onKeyDown={handleKeyDown}
                 className={cx("user-typing")}
             ></textarea>
-            <div className={cx("output")}>{output}</div>
+            <div className={cx("output")} style={{ width: 1100 }}>
+                {output}
+            </div>
         </>
     );
 };
