@@ -130,31 +130,30 @@ const UserInput = ({
                 nextWordWidth = TextRuler.getTextWidth(nextWord, font);
 
                 // Logger
-                console.log({
-                    bufferWidth: bufferWidth,
-                    currentIndex: j,
-                    currentChar: words[j],
-                    buffer: buffer,
-                    nextWordWidth: nextWordWidth,
-                    nextWord: nextWord,
-                    totalWidthPlusNextWord: bufferWidth + spaceWidth + nextWordWidth,
-                });
+                // console.log({
+                //     bufferWidth: bufferWidth,
+                //     currentIndex: j,
+                //     currentChar: words[j],
+                //     buffer: buffer,
+                //     nextWordWidth: nextWordWidth,
+                //     nextWord: nextWord,
+                //     totalWidthPlusNextWord: bufferWidth + spaceWidth + nextWordWidth,
+                // });
 
                 // Check if the next word width is bigger than the div width
                 if (bufferWidth + spaceWidth + nextWordWidth > divWidth * i) {
-                    console.log(`Added this index!: ${j}`);
+                    // console.log(`Added this index!: ${j}`);
                     lines.push({ line: i, content: buffer, lineBreakIndex: j, width: bufferWidth });
                     break;
                 }
             }
         }
 
-        console.log(lines);
+        // console.log(lines);
 
-        lines.forEach((line) => {
-            console.log(`test #${line.line} string width: ${TextRuler.getTextWidth(line.content, font)}`);
-        });
-
+        // lines.forEach((line) => {
+        // console.log(`test #${line.line} string width: ${TextRuler.getTextWidth(line.content, font)}`);
+        // });
     }, []);
 
     useEffect(() => {
@@ -162,10 +161,10 @@ const UserInput = ({
             const font = "3.6rem 'Roboto Mono', monospace";
 
             const inputString = textAreaRef.current.value.toString();
-            console.log(`Num of characters: ${inputString.length}`);
+            // console.log(`Num of characters: ${inputString.length}`);
 
             const length = TextRuler.getTextWidth(inputString, font);
-            console.log(length);
+            // console.log(length);
         }
     }, [userInput]);
 
@@ -194,9 +193,9 @@ const UserInput = ({
                 onKeyDown={handleKeyDown}
                 className={cx("user-typing")}
             ></textarea>
-            <div className={cx("output")} style={{ width: "100%" }}>
-                {output}
-            </div>
+            {/* <div className={cx("output")} style={{ width: "100%" }}> */}
+            {/* {output} */}
+            {/* </div> */}
         </>
     );
 };

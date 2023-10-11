@@ -1,6 +1,6 @@
 .wrapper {
     position: relative;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: left;
     color: var(--sub-color);
@@ -12,17 +12,18 @@
     word-break: normal;
     cursor: default;
 
-    .word {
-        margin-right: 2.15rem;
+    .wrong-space {
+        position: relative;
+        margin-top: 10px;
+        width: 2.15rem;
+        height: 1.5rem;
+        background-color: var(--error-color);
     }
 
     .correct {
         color: var(--text-color);
     }
-    .wrong {
+    .incorrect {
         color: var(--error-color);
-    }
-    .wrong-space {
-        background-color: var(--error-extra-color);
     }
 }
