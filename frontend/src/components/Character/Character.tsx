@@ -6,19 +6,15 @@ import { CharacterProps } from "@/Models/CharacterProps";
 
 const cx = classNames.bind(styles);
 
-const Character = ({ key, children, userInput, expectInput }: CharacterProps) => {
+const Character = ({ children, userInput, expectInput }: CharacterProps) => {
     let status = userInput !== expectInput ? "wrong" : "correct";
 
-    if (userInput !== " " && expectInput === " ") {
+    if (expectInput === " " && userInput !== " ") {
         status = "wrong-space";
     }
 
     const classes = cx("character", status);
-    return (
-        <span className={classes} key={key}>
-            {children}
-        </span>
-    );
+    return <span className={classes}>{children}</span>;
 };
 
 export default Character;

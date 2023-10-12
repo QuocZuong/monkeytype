@@ -29,7 +29,7 @@
         padding: 0 0.5rem;
         color: var(--sub-color);
         transition: background 0.125s, color 0.125s, opacity 0.125s;
-        :hover {
+        &:hover {
             color: var(--text-color);
         }
     }
@@ -67,16 +67,16 @@
         background-color: var(--sub-color);
         border-radius: 5px;
     }
-}
 
-.user-info:hover .username {
-    color: var(--text-color);
-}
+    &:hover .username {
+        color: var(--text-color);
+    }
 
-.user-info:hover i {
-    color: var(--text-color);
-}
+    &:hover .level {
+        background-color: var(--text-color);
+    }
 
-.user-info:hover .level {
-    background-color: var(--text-color);
+    &:hover i {
+        color: var(--text-color);
+    }
 }

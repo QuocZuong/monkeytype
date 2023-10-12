@@ -2,27 +2,31 @@
     position: absolute;
     color: transparent;
     font-size: var(--test-font-size);
-    width: 150rem;
-    height: 100%;
-    top: 0;
+    left: -9999px;
+    top: -9999px;
     bottom: 0;
+    width: 1px;
+    height: 1px;
     text-align: left;
     word-wrap: break-word;
     word-break: normal;
     cursor: default;
     background-color: transparent;
     outline: none;
+    opacity: 0;
     border: none;
     resize: none;
     overflow: hidden;
-    -webkit-user-select: none; /* Disable text selection on WebKit browsers */
-    -moz-user-select: none; /* Disable text selection on Mozilla Firefox */
     user-select: none;
+    pointer-events: none;
+}
+
+.user-typing::selection {
+    background-color: transparent;
 }
 
 .output {
     position: absolute;
     top: 0;
-    width: 150rem;
     height: 5rem;
 }

@@ -12,6 +12,7 @@ import styles from "./Header.module.scss";
 const cx = classNames.bind(styles);
 
 /**
+ * The header component
  *
  * @returns {ReactNode} return a header component apply for almost all pages
  */

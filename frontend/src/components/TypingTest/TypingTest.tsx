@@ -37,7 +37,7 @@ const TypingTest = () => {
     const numberClasses = cx("text-btn", hasNumber && "active");
 
     const handleReload = () => {
-        setReload(!isReload);
+        setReload(true);
     };
 
     return (
@@ -122,7 +122,7 @@ const TypingTest = () => {
                 </button>
                 <div className={cx("main")}>
                     <GenerateWords words={randomWords}></GenerateWords>
-                    <UserInput words={randomWords}></UserInput>
+                    <UserInput words={randomWords} isReload={isReload} setReload={setReload}></UserInput>
                 </div>
                 <button className={cx("reload-btn")} onClick={handleReload}>
                     <FontAwesomeIcon icon={faRedo} size="xl"></FontAwesomeIcon>

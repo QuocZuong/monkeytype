@@ -1,13 +1,29 @@
 .wrapper {
     position: relative;
-    display: flex;
-    justify-content: center;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: left;
     color: var(--sub-color);
     font-size: var(--test-font-size);
-    width: 150rem;
+    width: 120rem;
     height: 100%;
     text-align: left;
     word-wrap: break-word;
     word-break: normal;
     cursor: default;
+
+    .wrong-space {
+        position: relative;
+        margin-top: 10px;
+        width: 2.15rem;
+        height: 1.5rem;
+        background-color: var(--error-color);
+    }
+
+    .correct {
+        color: var(--text-color);
+    }
+    .incorrect {
+        color: var(--error-color);
+    }
 }
