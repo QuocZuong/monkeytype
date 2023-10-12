@@ -5,6 +5,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     length: 25,
     hasPunctuation: false,
     hasNumber: false,
+    width: 1200,
 });
 
 export { useGlobalState, setGlobalState };
