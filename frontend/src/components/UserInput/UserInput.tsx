@@ -16,20 +16,20 @@ const cx = classNames.bind(styles);
  * @param {string} words get words from
  * @returns {ReactNode} return an output which create effect typing for web
  */
-const generateCharacters = (userInput: Array<string>, words: string) => {
-    return (
-        <div className={cx("output")}>
-            {userInput.map((char, index) => {
-                return (
-                    <Character key={char + "_" + index} userInput={char} expectInput={words[index]}>
-                        {words[index]}
-                    </Character>
-                );
-            })}
-            <Caret></Caret>
-        </div>
-    );
-};
+// const generateCharacters = (userInput: Array<string>, words: string) => {
+//     return (
+//         <div className={cx("output")}>
+//             {userInput.map((char, index) => {
+//                 return (
+//                     <Character key={char + "_" + index} userInput={char} expectInput={words[index]}>
+//                         {words[index]}
+//                     </Character>
+//                 );
+//             })}
+//             <Caret></Caret>
+//         </div>
+//     );
+// };
 
 const UserInput = ({
     words,
@@ -43,7 +43,7 @@ const UserInput = ({
     const [userInput, setUserInput] = useState<string>("");
 
     const typedCharacter = userInput.split("");
-    const output = generateCharacters(typedCharacter, words);
+    // const output = generateCharacters(typedCharacter, words);
 
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 

@@ -50,4 +50,25 @@ function getCssStyles(element: HTMLElement, propName: string): string {
     return window.getComputedStyle(element).getPropertyValue(propName);
 }
 
-export default { getCssStyles, getFontInfomation, getTextWidth, getElementFont };
+function getNumberOfLetter(words: string, widthOfWord: number, widthOfBox: number): number[] {
+    let nearestSpaceIndex = 0;
+    let widthOfAllLetters = 0;
+    const result: number[] = [];
+
+    words.split("").forEach((letter, index) => {
+        if (letter === " ") {
+            nearestSpaceIndex = index;
+        }
+
+        widthOfAllLetters += widthOfWord;
+
+        if (widthOfAllLetters > widthOfBox) {
+            result.push(nearestSpaceIndex);
+            widthOfAllLetters = 0;
+        }
+    });
+
+    return result;
+}
+
+export default { getCssStyles, getFontInfomation, getTextWidth, getElementFont, getNumberOfLetter };
