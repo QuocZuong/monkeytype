@@ -10,6 +10,7 @@
     }
 }
 .left {
+    width: 100%;
     display: flex;
     align-items: center;
   }
@@ -23,9 +24,10 @@
 .col-wrapper {
     display: flex;
     height: 3.6rem;
+    align-items: center;
 
     .link + .link {
-        margin-left: 3.5rem;
+        margin-left: 2.5rem;
     }
 
     .link {
@@ -37,49 +39,88 @@
         }
     }
 
-    a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     button {
         background-color: transparent;
         outline: none;
         border: none;
-    }
-
-    .logo-link {
-        height: 3.6rem;
-        width: 35rem;
-        margin-right: 3.5rem;
+        
+        i {
+            display: flex;
+            font-size: 1.2rem;
+            font-style: normal;
+            align-items: center;
+            .svg-inline{
+              padding-right: 7px;
+            }
+        }
+   }
+   a {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--sub-color);
+    
+    i {
+        display: flex;
+        font-size: 1.2rem;
+        font-style: normal;
+        .svg-inline{
+          padding-right: 7px;
+        }
     }
 }
+    
+}
+// .level {
+//     padding: 0.5px 8px;
+//     color: var(--bg-color);
+//     background-color: var(--sub-color);
+//     border-radius: 5px;
+// }
 
-.user-info {
-    margin-right: 3.5rem;
+// &:hover .username {
+//     color: var(--text-color);
+// }
+
+// &:hover .level {
+//     background-color: var(--text-color);
+// }
+
+// &:hover i {
+//     color: var(--text-color);
+// }
+
+.key-tips{
+    display: flex;
+    line-height: 2;
+    margin-bottom: 2em;
+    padding: 0.5px 5px;
+    text-align: center;
+    flex-direction: column;
+    font-size: 12px;
     color: var(--sub-color);
-
-    div {
-        margin: 0 5px;
-    }
-
-    .level {
-        padding: 0.5px 8px;
+    .key-text{
+        padding: 0.5px 5px;
         color: var(--bg-color);
         background-color: var(--sub-color);
-        border-radius: 5px;
+        border-radius: 0.5rem;
+        display: inline-block;
+        // font-size: 5px;
+        // line-height: .7rem;
     }
+    .name-text{
+        color: var(--text-color);
+    }
+    .key-tips1{
+        margin-bottom: 8px;
+    } 
 }
-
-.user-info:hover .username {
-    color: var(--text-color);
+.leftright {
+    display: flex;
 }
+.footer-wrapper {
+    padding-bottom: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
 
-.user-info:hover i {
-    color: var(--text-color);
-}
-
-.user-info:hover .level {
-    background-color: var(--text-color);
 }
