@@ -9,12 +9,12 @@ import {
     faEnvelope,
     faFileContract,
     faLock,
-    faPallet,
+    faPalette,
     faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./Footer.module.scss";
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import styles from "./Footer.module.scss";
 
 const cx = classNames.bind(styles);
 const Footer = () => {
@@ -36,7 +36,7 @@ const Footer = () => {
                             </div>
                         </>
                     </div>
-                    <div className={cx("leftright")}>
+                    <div className={cx("left-right")}>
                         <Col className={cx("left")}>
                             <div className={cx("col-wrapper")}>
                                 <button title="leaderboard" className={cx("link")}>
@@ -115,7 +115,7 @@ const Footer = () => {
                             <div className={cx("col-wrapper")}>
                                 <button title="leaderboard" className={cx("link")}>
                                     <i>
-                                        <FontAwesomeIcon icon={faPallet} size="lg" style={{ marginRight: "7px" }} />
+                                        <FontAwesomeIcon icon={faPalette} size="lg" style={{ marginRight: "7px" }} />
                                         serika dark
                                     </i>
                                 </button>
