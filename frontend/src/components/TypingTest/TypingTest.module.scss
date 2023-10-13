@@ -1,3 +1,5 @@
+@import '../GlobalStyles/GlobalStyles.scss';
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -45,16 +47,30 @@
         margin: 0 10px;
     }
 
+    &.active {
+        color: var(--main-color);
+    }
+
     &:hover {
         color: var(--text-color);
     }
 
     &:active {
-        opacity: 0;
+        color: var(--sub-color);
     }
 
-    &.active {
-        color: var(--main-color);
+    @include keyframes(blinking) {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 }
 
