@@ -113,8 +113,7 @@ const GenerateWords = ({ words, mode }: { words: string; mode: Mode }) => {
 
     return (
         <div className={cx("wrapper")}>
-            {wordsToRender}
-            <Caret top={caretPosition.top} left={caretPosition.left}></Caret>
+            {wordsToRender} <Caret top={caretPosition.top} left={caretPosition.left}></Caret>
         </div>
     );
 };
