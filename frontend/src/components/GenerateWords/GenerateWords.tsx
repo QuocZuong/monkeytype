@@ -6,6 +6,7 @@ import { setGlobalState, useGlobalState } from "@/typingState";
 import textRuler from "../../util/textRuler";
 import Caret from "../Caret";
 import styles from "./GenerateWords.module.scss";
+import Mode from "../../Models/TypingModes";
 
 const cx = classNames.bind(styles);
 
@@ -14,10 +15,11 @@ const caretPosition = {
     top: 10,
     left: 0,
 };
-const GenerateWords = ({ words }: { words: string }) => {
+const GenerateWords = ({ words, mode }: { words: string; mode: Mode }) => {
     const [userInput] = useGlobalState("userInput");
     const characterFromUserInput = userInput.split("");
     const width = textRuler.getNumberOfLetter(words, 21.61, 1200);
+
     caretPosition.left = characterFromUserInput.length * 21.61;
     positionHistory.push({ top: caretPosition.top });
     width.forEach((width) => {
@@ -52,47 +54,67 @@ const GenerateWords = ({ words }: { words: string }) => {
         };
     }, [positionHistory]);
 
-    const wordsToRender = words.split("").map((character, index) => {
-        if (
-            character === " " &&
-            characterFromUserInput[index] !== undefined &&
-            characterFromUserInput[index] !== character
-        ) {
-            return (
-                <span key={index} className={cx("letter", "wrong-space")}>
-                    {" "}
-                </span>
-            );
-        } else if (character === " ") {
-            return (
-                <span key={index} className={cx("letter", "space")}>
-                    {" "}
-                </span>
-            );
-        } else if (characterFromUserInput[index] === undefined) {
-            return (
-                <span key={index} className={cx("letter")}>
-                    {character}
-                </span>
-            );
-        } else if (character === characterFromUserInput[index]) {
-            return (
-                <span key={index} className={cx("letter", "correct")}>
-                    {character}
-                </span>
-            );
-        } else if (character !== characterFromUserInput[index]) {
-            return (
-                <span key={index} className={cx("letter", "incorrect")}>
-                    {character}
-                </span>
-            );
+    const wordsToRender = (mode == Mode.zen ? userInput : words).split("").map((character, index) => {
+        switch (mode) {
+            case Mode.zen: {
+                if (character === " ") {
+                    return (
+                        <span key={index} className={cx("letter", "space")}>
+                            {" "}
+                        </span>
+                    );
+                } else {
+                    return (
+                        <span key={index} className={cx("letter", "correct")}>
+                            {character}
+                        </span>
+                    );
+                }
+            }
+            default: {
+                if (
+                    character === " " &&
+                    characterFromUserInput[index] !== undefined &&
+                    characterFromUserInput[index] !== character
+                ) {
+                    return (
+                        <span key={index} className={cx("letter", "wrong-space")}>
+                            {" "}
+                        </span>
+                    );
+                } else if (character === " ") {
+                    return (
+                        <span key={index} className={cx("letter", "space")}>
+                            {" "}
+                        </span>
+                    );
+                } else if (characterFromUserInput[index] === undefined) {
+                    return (
+                        <span key={index} className={cx("letter")}>
+                            {character}
+                        </span>
+                    );
+                } else if (character === characterFromUserInput[index]) {
+                    return (
+                        <span key={index} className={cx("letter", "correct")}>
+                            {character}
+                        </span>
+                    );
+                } else if (character !== characterFromUserInput[index]) {
+                    return (
+                        <span key={index} className={cx("letter", "incorrect")}>
+                            {character}
+                        </span>
+                    );
+                }
+            }
         }
     });
 
     return (
         <div className={cx("wrapper")}>
-            {wordsToRender} <Caret top={caretPosition.top} left={caretPosition.left}></Caret>
+            {wordsToRender}
+            <Caret top={caretPosition.top} left={caretPosition.left}></Caret>
         </div>
     );
 };
