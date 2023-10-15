@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,9 +15,11 @@ import {
 
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./Footer.module.scss";
+import PopupFooter from "../PopupFooter";
 
 const cx = classNames.bind(styles);
 const Footer = () => {
+    const [openModal, setOpenModal] = useState(false);
     return (
         <Container fluid className={cx("wrapper")}>
             <Row className={cx("row")}>
@@ -39,12 +41,19 @@ const Footer = () => {
                     <div className={cx("left-right")}>
                         <Col className={cx("left")}>
                             <div className={cx("col-wrapper")}>
-                                <button title="leaderboard" className={cx("link")}>
+                                <button
+                                    title="leaderboard"
+                                    className={cx("link")}
+                                    onClick={() => {
+                                        setOpenModal(true);
+                                    }}
+                                >
                                     <i>
                                         <FontAwesomeIcon icon={faEnvelope} size="lg" style={{ marginRight: "7px" }} />
                                         Contact
                                     </i>
                                 </button>
+                                {openModal && <PopupFooter closeModal={setOpenModal} />}
                                 <button title="leaderboard" className={cx("link")}>
                                     <i>
                                         <FontAwesomeIcon icon={faDonate} size="lg" style={{ marginRight: "7px" }} />{" "}
