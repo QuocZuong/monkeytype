@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,11 +14,21 @@ import {
 
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./Footer.module.scss";
+<<<<<<< HEAD
 import ChangeTheme from "../ChangeTheme";
 
 const cx = classNames.bind(styles);
 const Footer = () => {
 
+=======
+import SupportPopup from "../SupportPopup";
+import PopupFooter from "../PopupFooter";
+
+const cx = classNames.bind(styles);
+const Footer = () => {
+    const [openModal1, setOpenModal1] = useState(false);
+    const [openModal2, setOpenModal2] = useState(false);
+>>>>>>> 7a6120323136d97b60294db5ed85ab009439d9a1
     return (
         <Container fluid className={cx("wrapper")}>
             <Row className={cx("row")}>
@@ -40,18 +50,34 @@ const Footer = () => {
                     <div className={cx("left-right")}>
                         <Col className={cx("left")}>
                             <div className={cx("col-wrapper")}>
-                                <button title="leaderboard" className={cx("link")}>
+                                <button
+                                    title="leaderboard"
+                                    className={cx("link")}
+                                    onClick={() => {
+                                        setOpenModal1(true);
+                                    }}
+                                >
                                     <i>
                                         <FontAwesomeIcon icon={faEnvelope} size="lg" style={{ marginRight: "7px" }} />
                                         Contact
                                     </i>
                                 </button>
-                                <button title="leaderboard" className={cx("link")}>
+                                {openModal1 && <PopupFooter closeModal={setOpenModal1} />}
+                                {/* {openModal1 && <PopupFooter closeModal={setOpenModal1} />} */}
+                                <button
+                                    title="leaderboard"
+                                    className={cx("link")}
+                                    onClick={() => {
+                                        setOpenModal2(true);
+                                    }}
+                                >
                                     <i>
                                         <FontAwesomeIcon icon={faDonate} size="lg" style={{ marginRight: "7px" }} />{" "}
                                         Support
                                     </i>
                                 </button>
+                                {/* {openModal && <PopupFooter closeModal={setOpenModal} />} */}
+                                {openModal2 && <SupportPopup closeModal={setOpenModal2} />}
                                 <a
                                     href="https://github.com/monkeytypegame/monkeytype"
                                     className={cx("link")}

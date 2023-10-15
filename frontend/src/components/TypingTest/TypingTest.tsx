@@ -19,6 +19,7 @@ import {
 
 import styles from "./TypingTest.module.scss";
 import GenerateWords from "../GenerateWords";
+import Mode from "../../Models/TypingModes";
 
 import UserInput from "../UserInput";
 import { fakerGeneratorCustom } from "@/util/generateWords";
@@ -26,9 +27,12 @@ import { fakerGeneratorCustom } from "@/util/generateWords";
 const cx = classNames.bind(styles);
 
 const TypingTest = () => {
-    const [hasPunctuation] = useGlobalState("hasPunctuation");
-    const [hasNumber] = useGlobalState("hasNumber");
     const [length] = useGlobalState("length");
+    const [hasNumber] = useGlobalState("hasNumber");
+    const [hasPunctuation] = useGlobalState("hasPunctuation");
+
+    const [mode] = useGlobalState("mode");
+
     const [isReload, setReload] = useState<boolean>(false);
 
     const randomWords = fakerGeneratorCustom(length, hasPunctuation, hasNumber);
@@ -36,7 +40,23 @@ const TypingTest = () => {
     const punctuationClasses = cx("text-btn", hasPunctuation && "active");
     const numberClasses = cx("text-btn", hasNumber && "active");
 
+    const timeClasses = cx("text-btn", mode === Mode.time && "active");
+    const wordsClasses = cx("text-btn", mode === Mode.words && "active");
+    const quoteClasses = cx("text-btn", mode === Mode.quote && "active");
+    const zenClasses = cx("text-btn", mode === Mode.zen && "active");
+    const customClasses = cx("text-btn", mode === Mode.custom && "active");
+
     const handleReload = () => {
+        setReload(true);
+    };
+
+    /**
+     * Turn on a mode then turn off all other modes
+     * @param {string} mode the mode to toggle
+     * @returns {void}
+     */
+    const toggleMode = (mode: Mode): void => {
+        setGlobalState("mode", mode);
         setReload(true);
     };
 
@@ -69,31 +89,56 @@ const TypingTest = () => {
                     <div className={cx("left-spacer")}></div>
                 </Col>
                 <Col xs sm={6} className={cx("col")}>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={timeClasses}
+                        onClick={() => {
+                            toggleMode(Mode.time);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
                         </i>
                         time
                     </button>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={wordsClasses}
+                        onClick={() => {
+                            toggleMode(Mode.words);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faFont}></FontAwesomeIcon>
                         </i>
                         words
                     </button>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={quoteClasses}
+                        onClick={() => {
+                            toggleMode(Mode.quote);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faQuoteLeft}></FontAwesomeIcon>
                         </i>
                         quote
                     </button>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={zenClasses}
+                        onClick={() => {
+                            toggleMode(Mode.zen);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faMountain}></FontAwesomeIcon>
                         </i>
                         zen
                     </button>
-                    <button className={cx("text-btn")}>
+                    <button
+                        className={customClasses}
+                        onClick={() => {
+                            toggleMode(Mode.custom);
+                        }}
+                    >
                         <i>
                             <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
                         </i>
@@ -114,14 +159,16 @@ const TypingTest = () => {
                 </Col>
             </Row>
             <Row className={cx("test-typing")}>
-                <button className={cx("change-source-btn")}>
-                    <i>
-                        <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
-                    </i>
-                    <span>english</span>
-                </button>
+                {!(mode === Mode.zen) && (
+                    <button className={cx("change-source-btn")}>
+                        <i>
+                            <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
+                        </i>
+                        <span>english</span>
+                    </button>
+                )}
                 <div className={cx("main")}>
-                    <GenerateWords words={randomWords}></GenerateWords>
+                    <GenerateWords words={randomWords} mode={mode}></GenerateWords>
                     <UserInput words={randomWords} isReload={isReload} setReload={setReload}></UserInput>
                 </div>
                 <button className={cx("reload-btn")} onClick={handleReload}>
