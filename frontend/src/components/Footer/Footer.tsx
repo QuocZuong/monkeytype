@@ -15,11 +15,13 @@ import {
 
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./Footer.module.scss";
+import SupportPopup from "../SupportPopup";
 import PopupFooter from "../PopupFooter";
 
 const cx = classNames.bind(styles);
 const Footer = () => {
-    const [openModal, setOpenModal] = useState(false);
+    const [openModal1, setOpenModal1] = useState(false);
+    const [openModal2, setOpenModal2] = useState(false);
     return (
         <Container fluid className={cx("wrapper")}>
             <Row className={cx("row")}>
@@ -45,7 +47,7 @@ const Footer = () => {
                                     title="leaderboard"
                                     className={cx("link")}
                                     onClick={() => {
-                                        setOpenModal(true);
+                                        setOpenModal1(true);
                                     }}
                                 >
                                     <i>
@@ -53,13 +55,22 @@ const Footer = () => {
                                         Contact
                                     </i>
                                 </button>
-                                {openModal && <PopupFooter closeModal={setOpenModal} />}
-                                <button title="leaderboard" className={cx("link")}>
+                                {openModal1 && <PopupFooter closeModal={setOpenModal1} />}
+                                {/* {openModal1 && <PopupFooter closeModal={setOpenModal1} />} */}
+                                <button
+                                    title="leaderboard"
+                                    className={cx("link")}
+                                    onClick={() => {
+                                        setOpenModal2(true);
+                                    }}
+                                >
                                     <i>
                                         <FontAwesomeIcon icon={faDonate} size="lg" style={{ marginRight: "7px" }} />{" "}
                                         Support
                                     </i>
                                 </button>
+                                {/* {openModal && <PopupFooter closeModal={setOpenModal} />} */}
+                                {openModal2 && <SupportPopup closeModal={setOpenModal2} />}
                                 <a
                                     href="https://github.com/monkeytypegame/monkeytype"
                                     className={cx("link")}
