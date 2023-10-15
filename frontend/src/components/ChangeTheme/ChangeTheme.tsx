@@ -8,14 +8,14 @@ import Search from "../Search";
 
 const cx = classNames.bind(styles);
 
-// ... other imports ...
-
 const ChangeTheme = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
 
     const modalRef = useRef<HTMLDivElement | null>(null);
+
+    const selectedOptionRef = useRef<HTMLButtonElement | null>(null);
 
     const handleButtonClick = () => {
         setIsModalOpen(true);
@@ -48,11 +48,18 @@ const ChangeTheme = () => {
         } else {
             document.removeEventListener("click", handleOutsideClick);
         }
+        if (isModalOpen && selectedOptionRef.current) {
+            selectedOptionRef.current.scrollIntoView({
+                behavior: "auto",
+                block: "center",
+                inline: "center",
+            });
+        }
 
         return () => {
             document.removeEventListener("click", handleOutsideClick);
         };
-    }, [isModalOpen]);
+    }, [isModalOpen, selectedOption]);
 
     const options: string[] = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7", "Option 8", "Option 9", "Option 10",
         "Option 11", "Option 12", "Option 13", "Option 14", "serika dark", "Option 16", "Option 17", "Option 18", "Option 19", "Option 20", "Option 21", "Option 22",
@@ -82,7 +89,7 @@ const ChangeTheme = () => {
                 onHide={() => setIsModalOpen(false)}
                 className={cx("modal-fade")}
                 id="popuptheme"
-                animation={false}  // Disable animation
+                animation={false}
             >
                 <div className={cx("modal-content")} style={{ maxHeight: "80vh" }}>
                     <ModalHeader className={cx("modal-head")}>
@@ -110,6 +117,13 @@ const ChangeTheme = () => {
                                                     handleOptionClick(option);
                                                     setIsModalOpen(false);
                                                 }}
+
+                                                ref={(ref) => {
+                                                    if (selectedOption === option) {
+                                                        selectedOptionRef.current = ref;
+                                                    }
+                                                }}
+
                                             >
                                                 {option}
                                             </button>
