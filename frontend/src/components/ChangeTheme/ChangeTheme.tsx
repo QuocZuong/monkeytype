@@ -12,9 +12,9 @@ const ChangeTheme = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
+    const [initialSelectedOption, setInitialSelectedOption] = useState<string | null>(null);
 
     const modalRef = useRef<HTMLDivElement | null>(null);
-
     const selectedOptionRef = useRef<HTMLButtonElement | null>(null);
 
     const handleButtonClick = () => {
@@ -61,9 +61,47 @@ const ChangeTheme = () => {
         };
     }, [isModalOpen, selectedOption]);
 
-    const options: string[] = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7", "Option 8", "Option 9", "Option 10",
-        "Option 11", "Option 12", "Option 13", "Option 14", "serika dark", "Option 16", "Option 17", "Option 18", "Option 19", "Option 20", "Option 21", "Option 22",
-        "Option 23", "Option 24", "Option 25", "Option 26", "Option 27", "Option 28",];
+    const options: string[] = [
+        "Option 1",
+        "Option 2",
+        "option 4",
+        "option 5",
+        "option 6",
+        "option 7",
+        "option 8",
+        "option 9",
+        "option 10",
+        "option 11",
+        "serika dark",
+        "option 13",
+        "option 14",
+        "option 15",
+        "option 16",
+        "option 17",
+        "option 18",
+        "option 19",
+        "option 20",
+    ];
+
+    useEffect(() => {
+        if (initialSelectedOption) {
+            setSelectedOption(initialSelectedOption);
+        }
+    }, [initialSelectedOption]);
+
+    useEffect(() => {
+        if (selectedOption === null) {
+            // Set the initial selected option based on text-btn
+            const btnText = document.querySelector(".text-btn i")?.textContent;
+            if (btnText) {
+                const normalizedBtnText = btnText.trim().toLowerCase();
+                const matchingOption = options.find(option => option.toLowerCase() === normalizedBtnText);
+                if (matchingOption) {
+                    setInitialSelectedOption(matchingOption);
+                }
+            }
+        }
+    }, [selectedOption, options]);
 
     const getTextColor = (backgroundColor: string) => {
         const r = parseInt(backgroundColor.slice(1, 3), 16);
@@ -98,7 +136,8 @@ const ChangeTheme = () => {
                     <ModalBody className={cx("modal-body")} style={{ maxHeight: "70vh", overflowY: "auto" }}>
                         <Form className="form-popup">
                             <FormGroup className={cx("form-content")}>
-                                {options.filter(option => option.toLowerCase().includes(searchQuery.toLowerCase())) // Filter based on search query
+                                {options
+                                    .filter(option => option.toLowerCase().includes(searchQuery.toLowerCase())) // Filter based on search query
                                     .map((option, index) => (
                                         <div key={index} style={{ display: "flex", alignItems: "center" }}>
                                             {selectedOption === option && (
@@ -109,21 +148,20 @@ const ChangeTheme = () => {
                                                 style={{
                                                     border: "none",
                                                     backgroundColor: selectedOption === option ? "#e0f7fa" : "transparent",
-                                                    color: selectedOption === option
-                                                        ? getTextColor("#e0f7fa")
-                                                        : getTextColor("transparent")
+                                                    color:
+                                                        selectedOption === option
+                                                            ? getTextColor("#e0f7fa")
+                                                            : getTextColor("transparent"),
                                                 }}
                                                 onClick={() => {
                                                     handleOptionClick(option);
                                                     setIsModalOpen(false);
                                                 }}
-
                                                 ref={(ref) => {
                                                     if (selectedOption === option) {
                                                         selectedOptionRef.current = ref;
                                                     }
                                                 }}
-
                                             >
                                                 {option}
                                             </button>
@@ -133,12 +171,10 @@ const ChangeTheme = () => {
                         </Form>
                     </ModalBody>
                 </div>
-            </Modal >
-
-        </div >
+            </Modal>
+        </div>
     );
 };
 
 export default ChangeTheme;
-
 
