@@ -9,15 +9,16 @@ import {
     faEnvelope,
     faFileContract,
     faLock,
-    faPalette,
     faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./Footer.module.scss";
+import ChangeTheme from "../ChangeTheme";
 
 const cx = classNames.bind(styles);
 const Footer = () => {
+
     return (
         <Container fluid className={cx("wrapper")}>
             <Row className={cx("row")}>
@@ -113,12 +114,9 @@ const Footer = () => {
                         </Col>
                         <Col className={cx("right")}>
                             <div className={cx("col-wrapper")}>
-                                <button title="leaderboard" className={cx("link")}>
-                                    <i>
-                                        <FontAwesomeIcon icon={faPalette} size="lg" style={{ marginRight: "7px" }} />
-                                        serika dark
-                                    </i>
-                                </button>
+                                <div className={cx("button-theme")}>
+                                    <ChangeTheme></ChangeTheme>
+                                </div>
                                 <button className={cx("link")}>
                                     <i>
                                         <FontAwesomeIcon icon={faCodeBranch} size="lg" style={{ marginRight: "7px" }} />
@@ -129,8 +127,8 @@ const Footer = () => {
                         </Col>
                     </div>
                 </div>
-            </Row>
-        </Container>
+            </Row >
+        </Container >
     );
 };
 
