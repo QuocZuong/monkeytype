@@ -59,8 +59,8 @@ const Header = () => {
                             {/* Check if user logged or not to show icon*/}
                             {isLogged && (
                                 <>
-                                    <div className={cx("username")}>quoczuong</div>
-                                    <div className={cx("level")}>107</div>
+                                    <div className={cx("username")}>zuong</div>
+                                    <div className={cx("level")}>111</div>
                                 </>
                             )}
                         </Link>
