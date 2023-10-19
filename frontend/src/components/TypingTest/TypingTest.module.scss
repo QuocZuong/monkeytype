@@ -5,8 +5,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 120rem;
+    width: 100%;
+    max-width: 120rem;
     padding: 5rem 0;
+
 }
 
 .test-config {
@@ -123,10 +125,10 @@
         position: relative;
         color: var(--sub-color);
         font-size: var(--test-font-size);
-        width: 120rem;
         min-height: 5rem;
         margin: 5rem 0;
         cursor: default;
+        width: 100%;
     }
 
     .reload-btn {
