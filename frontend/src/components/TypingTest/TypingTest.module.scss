@@ -90,8 +90,30 @@
     }
 }
 
+.change-source-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    width: fit-content;
+    height: 3.6rem;
+    margin-top: 7rem;
+    color: var(--sub-color);
+    outline: none;
+    background-color: transparent;
+    border: none;
+
+    i {
+        margin: 2rem;
+    }
+
+    &:hover {
+        color: var(--text-color);
+    }
+}
+
 .test-typing {
-    margin: 8rem 0 5rem 0;
+    margin-bottom: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;

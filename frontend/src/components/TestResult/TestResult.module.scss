@@ -1,0 +1,74 @@
+@import "../GlobalStyles/GlobalStyles.scss";
+
+.top {
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5rem;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .tittle {
+        font-size: 5rem;
+    }
+
+    .text-result {
+        color: var(--main-color);
+        font-size: 7rem;
+    }
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+
+    .btn-bottom {
+        display: flex;
+        color: var(--sub-color);
+        background-color: transparent;
+        margin: 0 5rem;
+        outline: none;
+        border: none;
+        transition: color 0.3s, opacity 0.3s;
+
+        i {
+            width: 2.5rem;
+            margin: 0 10px;
+        }
+
+        &.active {
+            color: var(--main-color);
+        }
+
+        &:hover {
+            color: var(--text-color);
+        }
+
+        &:active {
+            color: var(--sub-color);
+        }
+
+        @include keyframes(blinking) {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+}

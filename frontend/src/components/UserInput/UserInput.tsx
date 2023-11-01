@@ -7,6 +7,7 @@ import Caret from "../Caret";
 import Character from "../Character";
 import { setGlobalState, useGlobalState } from "@/typingState";
 import TextRuler from "../../util/textRuler";
+import Header from "../Header";
 
 const cx = classNames.bind(styles);
 
