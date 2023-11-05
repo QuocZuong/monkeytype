@@ -36,10 +36,11 @@ const TypingTest = () => {
     const [isReload, setReload] = useState<boolean>(false);
     const [indexActivatedButton, setIndexActivatedButton] = useState<number>(2);
     const [typingState] = useGlobalState("typingState");
+    const [numberOfWords, setNumberOfWords] = useState(50);
 
     const [mode] = useGlobalState("mode");
 
-    const randomWords = fakerGeneratorCustom(length, hasPunctuation, hasNumber);
+    const randomWords = fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber);
 
     const punctuationClasses = cx("text-btn", hasPunctuation && "active");
     const numberClasses = cx("text-btn", hasNumber && "active");
@@ -56,6 +57,15 @@ const TypingTest = () => {
 
     const handleClickMode = (index: number) => {
         setIndexActivatedButton(index);
+        if (index === 0) {
+            setNumberOfWords(10);
+        } else if (index === 1) {
+            setNumberOfWords(25);
+        } else if (index === 2) {
+            setNumberOfWords(50);
+        } else if (index === 3) {
+            setNumberOfWords(100);
+        }
     };
 
     /**
@@ -101,7 +111,7 @@ const TypingTest = () => {
                             <div className={cx("left-spacer")}></div>
                         </Col>
                         <Col xs sm={6} className={cx("col")}>
-                            <button
+                            {/* <button
                                 className={timeClasses}
                                 onClick={() => {
                                     toggleMode(Mode.time);
@@ -111,7 +121,7 @@ const TypingTest = () => {
                                     <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
                                 </i>
                                 time
-                            </button>
+                            </button> */}
                             <button
                                 className={wordsClasses}
                                 onClick={() => {
@@ -123,7 +133,7 @@ const TypingTest = () => {
                                 </i>
                                 words
                             </button>
-                            <button
+                            {/* <button
                                 className={quoteClasses}
                                 onClick={() => {
                                     toggleMode(Mode.quote);
@@ -133,7 +143,7 @@ const TypingTest = () => {
                                     <FontAwesomeIcon icon={faQuoteLeft}></FontAwesomeIcon>
                                 </i>
                                 quote
-                            </button>
+                            </button> */}
                             <button
                                 className={zenClasses}
                                 onClick={() => {
@@ -145,7 +155,7 @@ const TypingTest = () => {
                                 </i>
                                 zen
                             </button>
-                            <button
+                            {/* <button
                                 className={customClasses}
                                 onClick={() => {
                                     toggleMode(Mode.custom);
@@ -155,35 +165,38 @@ const TypingTest = () => {
                                     <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
                                 </i>
                                 custom
-                            </button>
+                            </button> */}
                         </Col>
-                        <Col xs sm={3} className={cx("col")}>
-                            <div className={cx("right-spacer")}></div>
-                            <button
-                                className={cx("text-btn", indexActivatedButton === 0 ? "active" : "")}
-                                onClick={() => handleClickMode(0)}
-                            >
-                                {mode === "time" ? 15 : 10}
-                            </button>
-                            <button
-                                className={cx("text-btn", indexActivatedButton === 1 ? "active" : "")}
-                                onClick={() => handleClickMode(1)}
-                            >
-                                {mode === "time" ? 30 : 25}
-                            </button>
-                            <button
-                                className={cx("text-btn", indexActivatedButton === 2 ? "active" : "")}
-                                onClick={() => handleClickMode(2)}
-                            >
-                                {mode === "time" ? 60 : 50}
-                            </button>
-                            <button
-                                className={cx("text-btn", indexActivatedButton === 3 ? "active" : "")}
-                                onClick={() => handleClickMode(3)}
-                            >
-                                {mode === "time" ? 120 : 100}
-                            </button>
-                        </Col>
+
+                        {!(mode === Mode.zen) && typingState === TypingStates.pending && (
+                            <Col xs sm={3} className={cx("col")}>
+                                <div className={cx("right-spacer")}></div>
+                                <button
+                                    className={cx("text-btn", indexActivatedButton === 0 ? "active" : "")}
+                                    onClick={() => handleClickMode(0)}
+                                >
+                                    {mode === "time" ? 15 : 10}
+                                </button>
+                                <button
+                                    className={cx("text-btn", indexActivatedButton === 1 ? "active" : "")}
+                                    onClick={() => handleClickMode(1)}
+                                >
+                                    {mode === "time" ? 30 : 25}
+                                </button>
+                                <button
+                                    className={cx("text-btn", indexActivatedButton === 2 ? "active" : "")}
+                                    onClick={() => handleClickMode(2)}
+                                >
+                                    {mode === "time" ? 60 : 50}
+                                </button>
+                                <button
+                                    className={cx("text-btn", indexActivatedButton === 3 ? "active" : "")}
+                                    onClick={() => handleClickMode(3)}
+                                >
+                                    {mode === "time" ? 120 : 100}
+                                </button>
+                            </Col>
+                        )}
                     </Row>
                     <Row>
                         {!(mode === Mode.zen) && typingState === TypingStates.pending && (
