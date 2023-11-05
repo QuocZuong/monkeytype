@@ -50,7 +50,14 @@ function getCssStyles(element: HTMLElement, propName: string): string {
     return window.getComputedStyle(element).getPropertyValue(propName);
 }
 
-function getNumberOfLetter(words: string, widthOfWord: number, widthOfBox: number): number[] {
+/**
+ * Get the index of the nearest space to the width of the box from the string that fit into that box.
+ * @param {String} words the string that need to be put into the box
+ * @param {Number} widthOfWord the width of each letter in the string
+ * @param {Number} widthOfBox  the width of the box
+ * @returns {Number[]} An array of index of the nearest space to the width of the box
+ */
+function getBreakingSpaceIndices(words: string, widthOfWord: number, widthOfBox: number): number[] {
     let nearestSpaceIndex = 0;
     let widthOfAllLetters = 0;
     const result: number[] = [];
@@ -71,4 +78,4 @@ function getNumberOfLetter(words: string, widthOfWord: number, widthOfBox: numbe
     return result;
 }
 
-export default { getCssStyles, getFontInfomation, getTextWidth, getElementFont, getNumberOfLetter };
+export default { getCssStyles, getFontInfomation, getTextWidth, getElementFont, getBreakingSpaceIndices };
