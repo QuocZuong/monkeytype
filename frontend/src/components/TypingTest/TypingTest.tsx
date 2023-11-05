@@ -214,7 +214,7 @@ const TypingTest = () => {
             {!(typingState === TypingStates.finished) && (
                 <Row className={cx("test-typing")}>
                     <div className={cx("main")}>
-                        <GenerateWords words={randomWords} mode={mode}></GenerateWords>
+                        <GenerateWords words={randomWords} mode={mode} isReload={isReload}></GenerateWords>
                         <UserInput words={randomWords} isReload={isReload} setReload={setReload}></UserInput>
                     </div>
                     <button className={cx("reload-btn")} onClick={handleReload}>
