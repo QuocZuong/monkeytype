@@ -71,50 +71,55 @@ function initCaretPosition(pos: CaretPosision, charNum: number, breakingIndices:
     return newPos;
 }
 
-const GenerateWords = ({ words, mode }: { words: string; mode: Mode }) => {
+const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode, isReload: boolean }) => {
     const [userInput] = useGlobalState("userInput");
     const characterFromUserInput = userInput.split("");
     const breakingIndices = textRuler.getBreakingSpaceIndices(words, CHARACTER_WITDH, CONTAINER_WIDTH);
 
-    console.log(initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices));
-    caretPosition.current = initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
+    caretPosition.current = isReload ? {top: 10, left: 0} : initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
     caretPosition.history.push({ top: caretPosition.current.top, left: caretPosition.current.left });
 
     const hanldeLineChange = () => {
-        caretPosition.current = moveToNewLine(caretPosition.current);
+        caretPosition["current"] = moveToNewLine(caretPosition.current);
+
+        caretPosition.history.pop();
+
         console.log(caretPosition);
         console.log("moved to new line");
     };
 
     const handleDelete = (event: globalThis.KeyboardEvent) => {
         const key = event.key;
-
+        
+        console.log(caretPosition);
         if (key === "Backspace" || key == "Delete") {
-            const previousPosition: CaretPosision = {
-                top: caretPosition.current.top,
-                left: caretPosition.current.left,
-            };
+            caretPosition.history.pop();
 
-            caretPosition.history.push(previousPosition);
-            console.log("previousPosition: ", previousPosition);
-            console.log("all" + caretPosition.history);
+            const previousPosition: CaretPosision = caretPosition.history.pop() || { top: 10, left: 0 };
+
+            console.log(previousPosition);
 
             if (previousPosition) {
-                caretPosition.current.top = previousPosition.top;
+                caretPosition.current = {...previousPosition};
             }
         }
     };
 
     useEffect(() => {
-        console.log("redendered");
-        console.log(caretPosition.current);
-
+        console.log(caretPosition);
+        
         breakingIndices.forEach((index) => {
             if (index === userInput.length) {
                 console.log("line changed");
                 hanldeLineChange();
             }
         });
+
+        window.addEventListener("keydown", (event) => handleDelete(event));
+
+        return () => {
+            window.removeEventListener("keydown", handleDelete);
+        };
     }, [userInput]);
 
     const wordsToRender = (mode == Mode.zen ? userInput : words).split("").map((character, index) => {
