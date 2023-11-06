@@ -13,11 +13,20 @@
 .btn {
     &:hover {
         background-color: var(--text-color) !important;
+        color: var(--bg-color) !important;
     }
+}
+
+.modal-header {
+    border: none;
 }
 
 .modal-body {
     padding: 0;
+}
+
+.modal-footer {
+    border: none;
 }
 
 .entry {
