@@ -12,7 +12,7 @@ const UserDao = {
   /**
    * This function will return all the users in the database.
    */
-  getAllUser: async function () {
+  getAllUsers: async function () {
     const result = collection?.find().toArray();
     return result;
   },
@@ -35,7 +35,6 @@ const UserDao = {
     const result = collection?.deleteOne(userInfo);
     return result;
   },
-  // deleteUser: async function (user: User) {},
 
   deleteUser: async (user: User) => {
     const userInfo = {
@@ -54,6 +53,18 @@ const UserDao = {
 
     const result = collection?.updateOne(userInfo, userInfo);
     return result;
+  },
+
+  getUser: async function (user: User) {
+    return collection?.findOne(user);
+  },
+
+  getUserByUsername: async function (username: string) {
+    const userInfo = {
+      username: username
+    }
+
+    return collection?.findOne(userInfo);
   }
 }
 
@@ -64,8 +75,8 @@ async function init() {
     database = await DBConnection.getConnection();
     collection = database?.collection(collectionName);
 
-    console.log(database?.databaseName);
-    console.log(collection?.collectionName);
+    console.log(`Connecting to database: ${database?.databaseName}`);
+    console.log(`Connecting to collection: ${collection?.collectionName}`);
 
   } catch (err) {
     console.log(`Error in UserDao.init(): ${err}`);
