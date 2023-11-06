@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col } from "react-bootstrap";
-import { setGlobalState, useGlobalState } from "@/typingState";
+import { setGlobalState, useGlobalState } from "@/globalState";
 import {
     faAt,
     faClock,
@@ -33,12 +33,12 @@ const TypingTest = () => {
     const [length] = useGlobalState("length");
     const [hasNumber] = useGlobalState("hasNumber");
     const [hasPunctuation] = useGlobalState("hasPunctuation");
+    const [typingState] = useGlobalState("typingState");
+    const [mode] = useGlobalState("mode");
+
     const [isReload, setReload] = useState<boolean>(false);
     const [indexActivatedButton, setIndexActivatedButton] = useState<number>(2);
-    const [typingState] = useGlobalState("typingState");
     const [numberOfWords, setNumberOfWords] = useState(50);
-
-    const [mode] = useGlobalState("mode");
 
     const randomWords = fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber);
 
