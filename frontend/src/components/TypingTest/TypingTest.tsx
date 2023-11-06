@@ -30,6 +30,7 @@ import useCountdownTimer from "@/hooks/useCountdownTimer";
 import calculateWPM from "@/util/calculateWPM";
 import calculateAcc from "@/util/calculateAcc";
 import LanguagesPopup from "../LanguagesPopup";
+import { SOURCES } from "@/shared/sources";
 
 const cx = classNames.bind(styles);
 
@@ -221,7 +222,11 @@ const TypingTest = () => {
                                 <i>
                                     <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
                                 </i>
-                                <span>english</span>
+                                <span>
+                                    {language === "en"
+                                        ? "english"
+                                        : SOURCES.find((source) => source.code === language)?.name}
+                                </span>
                             </button>
                         )}
                     </Row>
