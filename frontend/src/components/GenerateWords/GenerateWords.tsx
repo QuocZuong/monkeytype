@@ -72,7 +72,6 @@ function initCaretPosition(pos: CaretPosision, charNum: number, breakingIndices:
 }
 
 const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; isReload: boolean }) => {
-const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; isReload: boolean }) => {
     const [userInput] = useGlobalState("userInput");
     const characterFromUserInput = userInput.split("");
     const breakingIndices = textRuler.getBreakingSpaceIndices(words, CHARACTER_WITDH, CONTAINER_WIDTH);

@@ -3,7 +3,6 @@ import React from "react";
 import classNames from "classnames/bind";
 import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { setGlobalState } from "@/typingState";
 import { faChevronRight, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./TestResult.module.scss";
