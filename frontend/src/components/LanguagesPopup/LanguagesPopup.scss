@@ -1,0 +1,31 @@
+.modal-content {
+    background-color: var(--bg-color);
+
+    button {
+        padding: 8px 16px;
+        color: var(--sub-color);
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+}
+
+.btn {
+    &:hover {
+        background-color: var(--text-color) !important;
+    }
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.entry {
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+        background-color: var(--text-color) !important;
+        color: var(--bg-color) !important;
+    }
+}
