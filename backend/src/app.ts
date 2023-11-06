@@ -1,23 +1,15 @@
-import { Request, Response } from "express";
-import express from "express"
-
-import uDao from "./DAO/UserDao";
-import User from "./Model/User";
+import express from "express";
+import cors from "cors";
+import Routes from "./Routes/Routes";
+import bodyParser from "body-parser";
 
 const app = express();
-// const uDao = new uDao();
+app.use(cors());
+app.use(bodyParser.json());
+
+Routes.forEach((route) => {
+  app.use(route.path, route.router);
+  console.log(`Added route for path ${route.path}`);
+});
 
 app.listen(50000);
-
-// app.use('/', routes)
-
-app.get("/", async (req: Request, res: Response) => {
-  console.log("Got a request on /");
-
-  // await uDao.createUser(new User("Heo", "HeoMap"));
-  let result = await uDao.getAllUser();
-
-  console.log(`result from query: ${result}`);
-
-  res.json(result);
-});

@@ -3,7 +3,7 @@
 import React, { KeyboardEvent, memo, useEffect } from "react";
 import classNames from "classnames/bind";
 
-import { setGlobalState, useGlobalState } from "@/typingState";
+import { setGlobalState, useGlobalState } from "@/globalState";
 import textRuler from "../../util/textRuler";
 import Caret from "../Caret";
 import styles from "./GenerateWords.module.scss";
@@ -76,6 +76,9 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; i
     const characterFromUserInput = userInput.split("");
     const breakingIndices = textRuler.getBreakingSpaceIndices(words, CHARACTER_WITDH, CONTAINER_WIDTH);
 
+    caretPosition.current = isReload
+        ? { top: 10, left: 0 }
+        : initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
     caretPosition.current = isReload
         ? { top: 10, left: 0 }
         : initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
