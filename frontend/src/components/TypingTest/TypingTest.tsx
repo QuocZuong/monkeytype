@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useMemo, useState } from "react";
-
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col } from "react-bootstrap";
@@ -35,14 +34,11 @@ import { SOURCES } from "@/shared/sources";
 const cx = classNames.bind(styles);
 
 const TypingTest = () => {
+    const [userInput] = useGlobalState("userInput");
     const [hasNumber] = useGlobalState("hasNumber");
     const [hasPunctuation] = useGlobalState("hasPunctuation");
     const [typingState] = useGlobalState("typingState");
     const [mode] = useGlobalState("mode");
-
-    const [isReload, setReload] = useState<boolean>(false);
-    const [indexActivatedButton, setIndexActivatedButton] = useState<number>(2);
-    const [numberOfWords, setNumberOfWords] = useState(50);
 
     const [isReload, setReload] = useState<boolean>(false);
     const [indexActivatedButton, setIndexActivatedButton] = useState<number>(1);
