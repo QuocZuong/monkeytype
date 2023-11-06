@@ -241,7 +241,7 @@ const TypingTest = () => {
 
             {typingState === TypingStates.finished && (
                 <TestResult
-                    wpm={Math.round(calculateWPM(userInput.length, previousTime > 0 ? previousTime : 1))}
+                    wpm={Math.round(calculateWPM(userInput.length, previousTime > 0 ? previousTime : 1, randomWords))}
                     acc={calculateAcc(userInput, randomWords)}
                     handleReload={handleReload}
                 ></TestResult>

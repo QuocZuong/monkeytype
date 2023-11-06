@@ -2,11 +2,13 @@
  *
  * @param {number} charactersTyped number of typed characters
  * @param {number } timeInSeconds time (seconds) to complete
+ * @param {string} words random words generated to calculate
  * @returns {number} - words per minute
  */
-function calculateWPM(charactersTyped: number, timeInSeconds: number) {
-    // Define the average word length (in characters)
-    const averageWordLength = 5; // You can adjust this value based on your content
+function calculateWPM(charactersTyped: number, timeInSeconds: number, words: string) {
+    // Calculate the average word length (in characters)
+
+    const averageWordLength = words.split(" ").reduce((acc, cur) => acc + cur.length, 0) / words.split(" ").length;
 
     // Calculate the number of words typed
     const numberOfWords = charactersTyped / averageWordLength;
