@@ -2,6 +2,7 @@ import { createGlobalState } from "react-hooks-global-state";
 
 import Mode from "../Models/TypingModes";
 import TypingStates from "@/Models/TypingStates";
+import { User } from "@/Models/User";
 
 const { setGlobalState, useGlobalState } = createGlobalState({
     userInput: "",
@@ -11,6 +12,12 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     mode: Mode.words,
     width: 1200,
     typingState: TypingStates.pending,
+    user: {
+        _id: 0,
+        username: "Guest",
+        password: "",
+    } as unknown as User,
+    isLoggedIn: false
 });
 
 export { useGlobalState, setGlobalState };

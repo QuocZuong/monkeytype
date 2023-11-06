@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./UserInput.module.scss";
 import Caret from "../Caret";
 import Character from "../Character";
-import { setGlobalState, useGlobalState } from "@/typingState";
+import { setGlobalState, useGlobalState } from "@/globalState";
 import TextRuler from "../../util/textRuler";
 import Header from "../Header";
 import TypingStates from "@/Models/TypingStates";
