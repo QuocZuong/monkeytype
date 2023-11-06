@@ -3,7 +3,7 @@
 import React, { KeyboardEvent, memo, useEffect } from "react";
 import classNames from "classnames/bind";
 
-import { setGlobalState, useGlobalState } from "@/typingState";
+import { setGlobalState, useGlobalState } from "@/globalState";
 import textRuler from "../../util/textRuler";
 import Caret from "../Caret";
 import styles from "./GenerateWords.module.scss";
@@ -71,12 +71,14 @@ function initCaretPosition(pos: CaretPosision, charNum: number, breakingIndices:
     return newPos;
 }
 
-const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode, isReload: boolean }) => {
+const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; isReload: boolean }) => {
     const [userInput] = useGlobalState("userInput");
     const characterFromUserInput = userInput.split("");
     const breakingIndices = textRuler.getBreakingSpaceIndices(words, CHARACTER_WITDH, CONTAINER_WIDTH);
 
-    caretPosition.current = isReload ? {top: 10, left: 0} : initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
+    caretPosition.current = isReload
+        ? { top: 10, left: 0 }
+        : initCaretPosition(caretPosition.current, characterFromUserInput.length, breakingIndices);
     caretPosition.history.push({ top: caretPosition.current.top, left: caretPosition.current.left });
 
     const hanldeLineChange = () => {
@@ -90,7 +92,7 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode, i
 
     const handleDelete = (event: globalThis.KeyboardEvent) => {
         const key = event.key;
-        
+
         console.log(caretPosition);
         if (key === "Backspace" || key == "Delete") {
             caretPosition.history.pop();
@@ -100,14 +102,14 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode, i
             console.log(previousPosition);
 
             if (previousPosition) {
-                caretPosition.current = {...previousPosition};
+                caretPosition.current = { ...previousPosition };
             }
         }
     };
 
     useEffect(() => {
         console.log(caretPosition);
-        
+
         breakingIndices.forEach((index) => {
             if (index === userInput.length) {
                 console.log("line changed");
