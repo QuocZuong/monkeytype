@@ -18,6 +18,10 @@ const UserDao = {
   },
 
   createUser: async function (user: User) {
+    if (!user) {
+      return null;
+    }
+    
     const userInfo = {
       username: user.getUsername(),
       password: user.getPassword()
@@ -28,6 +32,10 @@ const UserDao = {
   },
 
   deleteUserById: async function (id: string) {
+    if (!id) {
+      return null;
+    }
+
     const userInfo = {
       _id: new ObjectId(id)
     }
@@ -37,6 +45,10 @@ const UserDao = {
   },
 
   deleteUser: async (user: User) => {
+    if (!user) {
+      return null;
+    }
+
     const userInfo = {
       username: user.getUsername()
     }
@@ -46,6 +58,10 @@ const UserDao = {
   },
 
   updateUser: async function (user: User) {
+    if (!user) {
+      return null;
+    }
+
     const userInfo = {
       username: user.getUsername(),
       password: user.getPassword()
@@ -56,10 +72,18 @@ const UserDao = {
   },
 
   getUser: async function (user: User) {
+    if (!user) {
+      return null;
+    }
+
     return collection?.findOne(user);
   },
 
   getUserByUsername: async function (username: string) {
+    if (!username) {
+      return null;
+    }
+
     const userInfo = {
       username: username
     }
