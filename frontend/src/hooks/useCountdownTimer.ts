@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const useCountdownTimer = (seconds: number) => {
-    const [time, setTime] = useState(seconds);
+const useCountdownTimer = () => {
+    const [time, setTime] = useState(0);
+    const [previousTime, setPreviousTime] = useState(0); // state variable for previous time
     const intervalRef = useRef<number | NodeJS.Timeout | null>(null);
 
     const startCountdown = useCallback(() => {
         intervalRef.current = setInterval(() => {
-            setTime((preTime) => preTime - 1);
+            setTime((preTime) => preTime + 1);
         }, 1000);
     }, [setTime]);
 
@@ -14,9 +15,9 @@ const useCountdownTimer = (seconds: number) => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
         }
-
-        setTime(seconds);
-    }, [seconds]);
+        setPreviousTime(time);
+        setTime(0);
+    }, [time]);
 
     // when count down reaches 0, clear the interval
     useEffect(() => {
@@ -25,7 +26,7 @@ const useCountdownTimer = (seconds: number) => {
         }
     }, [time, intervalRef]);
 
-    return { time, startCountdown, resetCountdown };
+    return { time, previousTime, startCountdown, resetCountdown };
 };
 
 export default useCountdownTimer;
