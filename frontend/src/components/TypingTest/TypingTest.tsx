@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,11 +26,15 @@ import { fakerGeneratorCustom } from "@/util/generateWords";
 import TestResult from "../TestResult/TestResult";
 import TypingStates from "@/Models/TypingStates";
 import TypingModes from "../../Models/TypingModes";
+import useCountdownTimer from "@/hooks/useCountdownTimer";
+import calculateWPM from "@/util/calculateWPM";
+import calculateAcc from "@/util/calculateAcc";
+import LanguagesPopup from "../LanguagesPopup";
+import { SOURCES } from "@/shared/sources";
 
 const cx = classNames.bind(styles);
 
 const TypingTest = () => {
-    const [length] = useGlobalState("length");
     const [hasNumber] = useGlobalState("hasNumber");
     const [hasPunctuation] = useGlobalState("hasPunctuation");
     const [typingState] = useGlobalState("typingState");
@@ -40,7 +44,17 @@ const TypingTest = () => {
     const [indexActivatedButton, setIndexActivatedButton] = useState<number>(2);
     const [numberOfWords, setNumberOfWords] = useState(50);
 
-    const randomWords = fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber);
+    const [isReload, setReload] = useState<boolean>(false);
+    const [indexActivatedButton, setIndexActivatedButton] = useState<number>(1);
+    const [numberOfWords, setNumberOfWords] = useState(30);
+    const [showLanguesPopup, setShowLanguesPopup] = useState(false);
+    const [language, setLanguage] = useState("vi");
+
+    const { time, previousTime, startCountdown, resetCountdown } = useCountdownTimer();
+
+    const randomWords = useMemo(() => {
+        return fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber, language);
+    }, [isReload]);
 
     const punctuationClasses = cx("text-btn", hasPunctuation && "active");
     const numberClasses = cx("text-btn", hasNumber && "active");
@@ -52,6 +66,7 @@ const TypingTest = () => {
     const customClasses = cx("text-btn", mode === Mode.custom && "active");
 
     const handleReload = () => {
+        setGlobalState("typingState", TypingStates.pending);
         setReload(true);
     };
 
@@ -60,12 +75,16 @@ const TypingTest = () => {
         if (index === 0) {
             setNumberOfWords(10);
         } else if (index === 1) {
-            setNumberOfWords(25);
+            setNumberOfWords(30);
         } else if (index === 2) {
-            setNumberOfWords(50);
-        } else if (index === 3) {
-            setNumberOfWords(100);
+            setNumberOfWords(60);
         }
+        setReload(true);
+    };
+
+    const handleSetLanguage = (language: string) => {
+        setLanguage(language);
+        setReload(true);
     };
 
     /**
@@ -80,7 +99,7 @@ const TypingTest = () => {
 
     return (
         <div className={cx("wrapper")}>
-            {typingState === TypingStates.typing && <div>60</div>}
+            {typingState === TypingStates.typing && <div className={cx("time-counter")}>{time}</div>}
 
             {typingState === TypingStates.pending && (
                 <>
@@ -90,6 +109,7 @@ const TypingTest = () => {
                                 className={cx(punctuationClasses)}
                                 onClick={() => {
                                     setGlobalState("hasPunctuation", !hasPunctuation);
+                                    setReload(true);
                                 }}
                             >
                                 <i>
@@ -101,6 +121,7 @@ const TypingTest = () => {
                                 className={numberClasses}
                                 onClick={() => {
                                     setGlobalState("hasNumber", !hasNumber);
+                                    setReload(true);
                                 }}
                             >
                                 <i>
@@ -181,30 +202,34 @@ const TypingTest = () => {
                                     className={cx("text-btn", indexActivatedButton === 1 ? "active" : "")}
                                     onClick={() => handleClickMode(1)}
                                 >
-                                    {mode === "time" ? 30 : 25}
+                                    {mode === "time" ? 30 : 30}
                                 </button>
                                 <button
                                     className={cx("text-btn", indexActivatedButton === 2 ? "active" : "")}
                                     onClick={() => handleClickMode(2)}
                                 >
-                                    {mode === "time" ? 60 : 50}
+                                    {mode === "time" ? 60 : 60}
                                 </button>
-                                <button
+                                {/* <button
                                     className={cx("text-btn", indexActivatedButton === 3 ? "active" : "")}
                                     onClick={() => handleClickMode(3)}
                                 >
                                     {mode === "time" ? 120 : 100}
-                                </button>
+                                </button> */}
                             </Col>
                         )}
                     </Row>
                     <Row>
                         {!(mode === Mode.zen) && typingState === TypingStates.pending && (
-                            <button className={cx("change-source-btn")}>
+                            <button className={cx("change-source-btn")} onClick={() => setShowLanguesPopup(true)}>
                                 <i>
                                     <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
                                 </i>
-                                <span>english</span>
+                                <span>
+                                    {language === "en"
+                                        ? "english"
+                                        : SOURCES.find((source) => source.code === language)?.name}
+                                </span>
                             </button>
                         )}
                     </Row>
@@ -215,7 +240,14 @@ const TypingTest = () => {
                 <Row className={cx("test-typing")}>
                     <div className={cx("main")}>
                         <GenerateWords words={randomWords} mode={mode} isReload={isReload}></GenerateWords>
-                        <UserInput words={randomWords} isReload={isReload} setReload={setReload}></UserInput>
+                        <UserInput
+                            words={randomWords}
+                            isReload={isReload}
+                            setReload={setReload}
+                            startCountdown={startCountdown}
+                            resetCountdown={resetCountdown}
+                            numberOfWords={numberOfWords}
+                        ></UserInput>
                     </div>
                     <button className={cx("reload-btn")} onClick={handleReload}>
                         <FontAwesomeIcon icon={faRedo} size="xl"></FontAwesomeIcon>
@@ -223,7 +255,19 @@ const TypingTest = () => {
                 </Row>
             )}
 
-            {typingState === TypingStates.finished && <TestResult wpm={120} acc={100}></TestResult>}
+            {typingState === TypingStates.finished && (
+                <TestResult
+                    wpm={Math.round(calculateWPM(userInput.length, previousTime > 0 ? previousTime : 1, randomWords))}
+                    acc={calculateAcc(userInput, randomWords)}
+                    handleReload={handleReload}
+                ></TestResult>
+            )}
+
+            <LanguagesPopup
+                show={showLanguesPopup}
+                onHide={() => setShowLanguesPopup(false)}
+                handleSetLanguage={handleSetLanguage}
+            ></LanguagesPopup>
         </div>
     );
 };
