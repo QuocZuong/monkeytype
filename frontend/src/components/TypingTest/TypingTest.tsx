@@ -29,6 +29,7 @@ import TypingModes from "../../Models/TypingModes";
 import useCountdownTimer from "@/hooks/useCountdownTimer";
 import calculateWPM from "@/util/calculateWPM";
 import calculateAcc from "@/util/calculateAcc";
+import LanguagesPopup from "../LanguagesPopup";
 
 const cx = classNames.bind(styles);
 
@@ -42,11 +43,13 @@ const TypingTest = () => {
     const [isReload, setReload] = useState<boolean>(false);
     const [indexActivatedButton, setIndexActivatedButton] = useState<number>(1);
     const [numberOfWords, setNumberOfWords] = useState(30);
+    const [showLanguesPopup, setShowLanguesPopup] = useState(false);
+    const [language, setLanguage] = useState("vi");
 
     const { time, previousTime, startCountdown, resetCountdown } = useCountdownTimer();
 
     const randomWords = useMemo(() => {
-        return fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber);
+        return fakerGeneratorCustom(numberOfWords, hasPunctuation, hasNumber, language);
     }, [isReload]);
 
     const punctuationClasses = cx("text-btn", hasPunctuation && "active");
@@ -59,8 +62,8 @@ const TypingTest = () => {
     const customClasses = cx("text-btn", mode === Mode.custom && "active");
 
     const handleReload = () => {
-        setReload(true);
         setGlobalState("typingState", TypingStates.pending);
+        setReload(true);
     };
 
     const handleClickMode = (index: number) => {
@@ -72,6 +75,11 @@ const TypingTest = () => {
         } else if (index === 2) {
             setNumberOfWords(60);
         }
+        setReload(true);
+    };
+
+    const handleSetLanguage = (language: string) => {
+        setLanguage(language);
         setReload(true);
     };
 
@@ -209,7 +217,7 @@ const TypingTest = () => {
                     </Row>
                     <Row>
                         {!(mode === Mode.zen) && typingState === TypingStates.pending && (
-                            <button className={cx("change-source-btn")}>
+                            <button className={cx("change-source-btn")} onClick={() => setShowLanguesPopup(true)}>
                                 <i>
                                     <FontAwesomeIcon icon={faEarthAsia} size="xl"></FontAwesomeIcon>
                                 </i>
@@ -246,6 +254,12 @@ const TypingTest = () => {
                     handleReload={handleReload}
                 ></TestResult>
             )}
+
+            <LanguagesPopup
+                show={showLanguesPopup}
+                onHide={() => setShowLanguesPopup(false)}
+                handleSetLanguage={handleSetLanguage}
+            ></LanguagesPopup>
         </div>
     );
 };
