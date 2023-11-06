@@ -1,5 +1,6 @@
 import express from "express";
 import uDAO from "../DAO/UserDao";
+import User from "../Model/User";
 
 const router = express.Router();
 
@@ -8,6 +9,7 @@ const routes = {
   login: "/login",
 };
 
+// Get user by username
 router.get(routes.username, (req, res) => {
   const username = String(req.params[0]);
 
@@ -26,21 +28,28 @@ router.get(routes.username, (req, res) => {
 
 // Login
 router.post(routes.login, (req, res) => {
-  const user = req.body;
+  const user = req.body as User;
 
-  console.log(
-    "Got a request on /login at " + new Date().toISOString()
-  );
-  console.log(user);
+  console.log("Got a request on /login at " + new Date().toISOString());
 
-  uDAO.getUser(user)
-    .then(() => {
+  uDAO
+    .getUser(user)
+    .then((result) => {
+      console.log("------------------");
+      console.log("result from query:");
+      console.log(result);
+      console.log("------------------");
+
+      if (!result) {
+        throw new Error("User not found");
+      }
+
       res.status(200);
       res.json({ result: true });
     })
-    .catch(() => {
+    .catch((err) => {
       res.status(404);
-      res.json({ result: false });
+      res.json({ result: false, error: err.message });
     });
 });
 
