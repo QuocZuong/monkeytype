@@ -14,10 +14,12 @@ body.active-modal {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.25s;
 }
 
 .overlay {
     background: rgba(0, 0, 0, 0.75);
+    animation: fadeIn 0.25s;
 }
 
 .modal-content {
@@ -30,6 +32,17 @@ body.active-modal {
     margin: 0 2rem;
     height: 473px;
     max-width: 900px;
+    animation: fadeIn 0.25s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .title {
@@ -51,7 +64,6 @@ body.active-modal {
     color: var(--text-color);
     padding: 15px 0px;
 }
-
 
 .buttons {
     display: grid;

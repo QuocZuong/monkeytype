@@ -1,12 +1,18 @@
-@import '../GlobalStyles/GlobalStyles.scss';
+@import "../GlobalStyles/GlobalStyles.scss";
 
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 120rem;
+    width: 100%;
+    max-width: 120rem;
     padding: 5rem 0;
+
+    .time-counter {
+        font-size: 4rem;
+        color: var(--main-color);
+    }
 }
 
 .test-config {
@@ -16,7 +22,7 @@
     min-height: 5rem;
     width: auto;
     background-color: var(--sub-alt-color);
-    border-radius: 15px;
+    border-radius: 0.6rem;
 
     .col {
         display: flex;
@@ -31,6 +37,21 @@
         height: 3rem;
         width: 0.4rem;
         margin: 0 1rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .test-config {
+        display: grid;
+        justify-items: center;
+        padding: 0.25rem 1rem;
+        min-height: 5rem;
+        height: 100px;
+
+        .left-spacer,
+        .right-spacer {
+            display: none;
+        }
     }
 }
 
@@ -74,12 +95,34 @@
     }
 }
 
-.test-typing {
-    margin: 8rem 0 5rem 0;
+.change-source-btn {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.6rem;
+    width: fit-content;
+    height: 3.6rem;
+    margin-top: 7rem;
+    color: var(--sub-color);
+    outline: none;
+    background-color: transparent;
+    border: none;
 
+    i {
+        margin: 2rem;
+    }
+
+    &:hover {
+        color: var(--text-color);
+    }
+}
+
+.test-typing {
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
     button {
         display: flex;
         justify-content: center;
@@ -105,10 +148,10 @@
         position: relative;
         color: var(--sub-color);
         font-size: var(--test-font-size);
-        width: 120rem;
         min-height: 5rem;
         margin: 5rem 0;
         cursor: default;
+        width: 100%;
     }
 
     .reload-btn {
