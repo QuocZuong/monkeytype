@@ -10,7 +10,7 @@ import styles from "./TestResult.module.scss";
 
 const cx = classNames.bind(styles);
 
-const TestResult = ({ wpm, acc }: { wpm: number; acc: number }) => {
+const TestResult = ({ wpm, acc, handleReload }: { wpm: number; acc: number; handleReload: () => void }) => {
     return (
         <div className={cx("wrapper")}>
             <Row className={cx("top")}>
@@ -19,19 +19,14 @@ const TestResult = ({ wpm, acc }: { wpm: number; acc: number }) => {
                     <div className={cx("text-result")}>{wpm}</div>
                 </Col>
                 <Col className={cx("right")}>
-                    <div className={cx("tittle")}>wpm</div>
+                    <div className={cx("tittle")}>acc</div>
                     <div className={cx("text-result")}>{acc}%</div>
                 </Col>
             </Row>
             <div className={cx("bottom")}>
-                <button className={cx("btn-bottom")}>
+                <button className={cx("btn-bottom")} onClick={handleReload}>
                     <i>
                         <FontAwesomeIcon icon={faChevronRight} size="xl"></FontAwesomeIcon>
-                    </i>
-                </button>
-                <button className={cx("btn-bottom")}>
-                    <i>
-                        <FontAwesomeIcon icon={faSyncAlt} size="xl"></FontAwesomeIcon>
                     </i>
                 </button>
             </div>
