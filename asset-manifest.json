@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/monkeytype/static/css/main.a91d3df2.css",
-    "main.js": "/monkeytype/static/js/main.f1d81c72.js",
+    "main.css": "/monkeytype/static/css/main.606f79f7.css",
+    "main.js": "/monkeytype/static/js/main.b3b48b16.js",
     "static/js/787.45b7776a.chunk.js": "/monkeytype/static/js/787.45b7776a.chunk.js",
     "static/media/mtfulllogo.png": "/monkeytype/static/media/mtfulllogo.bbd998e4eaf4fd6f95ba.png",
     "index.html": "/monkeytype/index.html",
     "static/media/logo.svg": "/monkeytype/static/media/logo.6e6991162f6c37eab0f3e3afeb5cb4bb.svg",
-    "main.a91d3df2.css.map": "/monkeytype/static/css/main.a91d3df2.css.map",
-    "main.f1d81c72.js.map": "/monkeytype/static/js/main.f1d81c72.js.map",
+    "main.606f79f7.css.map": "/monkeytype/static/css/main.606f79f7.css.map",
+    "main.b3b48b16.js.map": "/monkeytype/static/js/main.b3b48b16.js.map",
     "787.45b7776a.chunk.js.map": "/monkeytype/static/js/787.45b7776a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a91d3df2.css",
-    "static/js/main.f1d81c72.js"
+    "static/css/main.606f79f7.css",
+    "static/js/main.b3b48b16.js"
   ]
 }
