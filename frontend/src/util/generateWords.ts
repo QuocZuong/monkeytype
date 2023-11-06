@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import generateWordsBySource from "./generateWordsBySource";
 
 /**
  * using to add punctuation to string
@@ -49,13 +50,16 @@ function addNumber(fakerString: string) {
  * @param {number} length length of word to generate
  * @param {boolean} hasPunctuation generate with punctuation (capitalize the first letter) with 7% probability of appearing
  * @param {boolean} hasNumber generate with number with 7% probability of appearing
+ * @param {string} language language of word to generate
  * @returns {string} return a string generated from FakerJS
  */
-export function fakerGeneratorCustom(length: number, hasPunctuation: boolean, hasNumber: boolean) {
+export function fakerGeneratorCustom(length: number, hasPunctuation: boolean, hasNumber: boolean, language: string) {
     let result = "";
     let temp = "";
 
-    temp = faker.word.words(length || 30);
+    if (language !== "en") {
+        temp = generateWordsBySource(language, length);
+    } else temp = faker.word.words(length || 30);
 
     if (hasPunctuation) {
         temp = addPunctuation(temp);
