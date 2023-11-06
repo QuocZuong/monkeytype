@@ -55,7 +55,7 @@ export function fakerGeneratorCustom(length: number, hasPunctuation: boolean, ha
     let result = "";
     let temp = "";
 
-    temp = faker.word.words(length || 10);
+    temp = faker.word.words(length || 30);
 
     if (hasPunctuation) {
         temp = addPunctuation(temp);
