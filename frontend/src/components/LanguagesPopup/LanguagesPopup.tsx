@@ -37,6 +37,7 @@ const LanguagesPopup = ({
                         </button>
                     </div>
                 </Modal.Body>
+                <Modal.Footer></Modal.Footer>
             </div>
         </Modal>
     );
