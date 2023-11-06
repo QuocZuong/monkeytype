@@ -106,9 +106,6 @@ const GenerateWords = ({ words, mode }: { words: string; mode: Mode }) => {
     };
 
     useEffect(() => {
-        console.log("redendered");
-        console.log(caretPosition.current);
-
         breakingIndices.forEach((index) => {
             if (index === userInput.length) {
                 console.log("line changed");
