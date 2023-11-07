@@ -12,11 +12,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     mode: Mode.words,
     width: 1200,
     typingState: TypingStates.pending,
-    user: {
-        _id: 0,
-        username: "Guest",
-        password: "",
-    } as unknown as User,
+    user: null as unknown as User,
     isLoggedIn: false
 });
 

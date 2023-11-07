@@ -1,9 +1,11 @@
 import React, { ComponentType, Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import routes from "./routes/routes";
 
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import { LayoutProps } from "./Models/LayoutProps";
+import { useGlobalState } from "./globalState";
+import config from "@/config";
 
 const App = () => (
     <Router>
@@ -19,6 +21,19 @@ const App = () => (
                     }
 
                     const Page = route.component;
+
+                    // If route need login and user is not logged in, redirect to login page
+                    if (route.auth && !useGlobalState("isLoggedIn")[0]) {
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Navigate to={config.routeLinks.login} />
+                                }
+                            ></Route>
+                        );
+                    }
 
                     return (
                         <Route

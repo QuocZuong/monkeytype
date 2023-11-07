@@ -20,8 +20,6 @@ const UserSection = () => {
     const [isLoggedIn] = useGlobalState("isLoggedIn");
     const [user] = useGlobalState("user");
     const nagivator = useNavigate();
-    const level = 1;
-
 
     const handleSignout = () => {
         alert("Signing out");
@@ -38,7 +36,7 @@ const UserSection = () => {
                             <FontAwesomeIcon icon={faUser} size="lg" />
                         </i>
                         <div className={cx("username")}>{user.username}</div>
-                        <div className={cx("level")}>{level}</div>
+                        <div className={cx("level")}>{user.level}</div>
                     </Link>
                 </Col>
                 <Col md={1}>

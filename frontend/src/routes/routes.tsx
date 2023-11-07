@@ -30,6 +30,7 @@ const routes: Array<RouteProps> = [
         path: config.routeLinks.profile,
         component: Profile,
         layout: MainLayout,
+        auth: true,
     },
     {
         path: config.routeLinks.login,

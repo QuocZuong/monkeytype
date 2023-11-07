@@ -1,6 +1,5 @@
 import { Router } from "express";
 
-import DefaultRouter from "./DefaultRouter";
 import UserRouter from "./UserRouter";
 
 const baseUrl = "/api/monkeytype";
@@ -11,7 +10,6 @@ type Route = {
 };
 
 export const Routes: Array<Route> = [
-  { path: `${baseUrl}`, router: DefaultRouter },
   { path: `${baseUrl}/users`, router: UserRouter },
 ];
 
