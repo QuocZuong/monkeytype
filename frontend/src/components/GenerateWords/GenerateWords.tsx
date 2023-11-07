@@ -124,6 +124,7 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; i
             window.removeEventListener("keydown", handleDelete);
         };
     }, [userInput]);
+    let currentIndex = 0;
 
     const wordsToRender = (mode == Mode.zen ? userInput : words).split("").map((character, index) => {
         switch (mode) {
@@ -160,18 +161,28 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; i
                         </span>
                     );
                 } else if (characterFromUserInput[index] === undefined) {
-                    return (
-                        <span key={index} className={cx("letter")}>
-                            {character}
-                        </span>
-                    );
+                    if (currentIndex === index) {
+                        return (
+                            <span key={index} className={cx("letter", "active")}>
+                                {character}
+                            </span>
+                        );
+                    } else {
+                        return (
+                            <span key={index} className={cx("letter")}>
+                                {character}
+                            </span>
+                        );
+                    }
                 } else if (character === characterFromUserInput[index]) {
+                    currentIndex = index + 1;
                     return (
                         <span key={index} className={cx("letter", "correct")}>
                             {character}
                         </span>
                     );
                 } else if (character !== characterFromUserInput[index]) {
+                    currentIndex = index + 1;
                     return (
                         <span key={index} className={cx("letter", "incorrect")}>
                             {character}
@@ -184,7 +195,8 @@ const GenerateWords = ({ words, mode, isReload }: { words: string; mode: Mode; i
 
     return (
         <div className={cx("wrapper")}>
-            {wordsToRender} <Caret top={caretPosition.current.top} left={caretPosition.current.left}></Caret>
+            {wordsToRender}
+            {/* <Caret top={caretPosition.current.top} left={caretPosition.current.left}></Caret>  */}
         </div>
     );
 };

@@ -26,4 +26,8 @@
     .incorrect {
         color: var(--error-color);
     }
+    .active {
+        text-decoration: underline;
+        text-decoration-color: var(--text-color);
+    }
 }
