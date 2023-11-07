@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/monkeytype/static/css/main.70b2ef67.css",
-    "main.js": "/monkeytype/static/js/main.f757fcc0.js",
+    "main.css": "/monkeytype/static/css/main.8a992bf2.css",
+    "main.js": "/monkeytype/static/js/main.cde9b267.js",
     "static/js/787.45b7776a.chunk.js": "/monkeytype/static/js/787.45b7776a.chunk.js",
     "static/media/mtfulllogo.png": "/monkeytype/static/media/mtfulllogo.bbd998e4eaf4fd6f95ba.png",
     "index.html": "/monkeytype/index.html",
-    "static/media/logo.svg": "/monkeytype/static/media/logo.6272d1d3e511c01da8e82392513dbf03.svg",
-    "main.70b2ef67.css.map": "/monkeytype/static/css/main.70b2ef67.css.map",
-    "main.f757fcc0.js.map": "/monkeytype/static/js/main.f757fcc0.js.map",
+    "static/media/logo.svg": "/monkeytype/static/media/logo.6e6991162f6c37eab0f3e3afeb5cb4bb.svg",
+    "main.8a992bf2.css.map": "/monkeytype/static/css/main.8a992bf2.css.map",
+    "main.cde9b267.js.map": "/monkeytype/static/js/main.cde9b267.js.map",
     "787.45b7776a.chunk.js.map": "/monkeytype/static/js/787.45b7776a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.70b2ef67.css",
-    "static/js/main.f757fcc0.js"
+    "static/css/main.8a992bf2.css",
+    "static/js/main.cde9b267.js"
   ]
 }
