@@ -1,0 +1,59 @@
+.wrapper {
+  background-color: var(--sub-alt-color);
+  border-radius: .625rem;
+  height: 200px;
+
+  padding: 3rem;
+
+  .small-row {
+    margin-top: 1rem;
+  }
+
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+
+    background-color: var(--sub-color);
+    border-radius: 50%;
+
+    .user-icon {
+      width: 100%;
+    }
+
+    .icon {
+      color: var(--sub-alt-color);
+      width: 100%;
+    }
+  }
+
+  .username {
+    font-size: 4.5rem;
+    font-weight: 500;
+  }
+
+  .level-bar {
+    width: 60%;
+    height: 30%;
+
+    background-color: var(--sub-color);
+    border-radius: 2em;
+
+    position: relative;
+
+    .xp-indicator {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 50%;
+      height: 100%;
+      border-radius: 2em;
+
+      background-color: var(--main-color);
+    }
+  }
+}

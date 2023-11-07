@@ -1,20 +1,27 @@
-class User {
-  private username: string;
-  private password: string;
+type User = {
+  username: string;
+  password: string;
+  email: string;
+  timeJoined: string;
+  level: number;
+  xp: number;
+  testStarted: number;
+  testCompleted: number;
+  timeTyping: string;
+  typingStats: {
+    w10: {
+      times: number;
+      avgAccuracy: number;
+    };
+    w30: {
+      times: number;
+      avgAccuracy: number;
+    };
+    w60: {
+      times: number;
+      avgAccuracy: number;
+    };
+  };
+};
 
-  constructor(username: string, password: string) {
-    this.username = username;
-    this.password = password
-  }
-
-  getUsername() {
-    return this.username;
-  }
-
-  getPassword() {
-    return this.password;
-  }
-
-}
-
-export default User
+export default User;

@@ -2,8 +2,7 @@
   
   .control {
     width: 100%;
-    height: 3rem;
-
+    height: 4rem;
     border: none;
 
     background-color: var(--sub-alt-color);
@@ -11,6 +10,8 @@
   
     padding: .5rem;
     margin-top: 1rem;
+
+    font-size: 1.3rem;
 
     &::placeholder {
       color: var(--text-color);
@@ -26,7 +27,7 @@
 
   .submit-btn {
     width: 100%;
-    height: 3rem;
+    height: 4rem;
 
     border: none;
     border-radius: .625rem;
@@ -35,6 +36,8 @@
     color: var(--text-color);
 
     margin-top: 1rem;
+
+    font-size: 1.3rem;
 
     &:hover {
       background-color: var(--text-color);

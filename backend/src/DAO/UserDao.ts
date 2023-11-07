@@ -9,6 +9,7 @@ const collectionName: string = "Users";
 init();
 
 const UserDao = {
+
   /**
    * This function will return all the users in the database.
    */
@@ -21,13 +22,19 @@ const UserDao = {
     if (!user) {
       return null;
     }
-    
-    const userInfo = {
-      username: user.getUsername(),
-      password: user.getPassword()
+
+    if (user.username === "" || user.username === "") {
+      return null;
     }
 
-    const result = collection?.insertOne(userInfo);
+    const isDuplicatedUsername = (await UserDao.getUserByUsername(user.username)) ? true : false;
+    const isDuplicatedEmail = (await UserDao.getUserByEmail(user.email)) ? true : false;
+
+    if (isDuplicatedUsername || isDuplicatedEmail) {
+      return null;
+    }
+    
+    const result = collection?.insertOne(user);
     return result;
   },
 
@@ -50,7 +57,7 @@ const UserDao = {
     }
 
     const userInfo = {
-      username: user.getUsername()
+      username: user.username
     }
     
     const result = collection?.deleteOne(userInfo);
@@ -63,8 +70,7 @@ const UserDao = {
     }
 
     const userInfo = {
-      username: user.getUsername(),
-      password: user.getPassword()
+      ...user
     }
 
     const result = collection?.updateOne(userInfo, userInfo);
@@ -80,12 +86,24 @@ const UserDao = {
   },
 
   getUserByUsername: async function (username: string) {
-    if (!username) {
+    if (!username || username === "") {
       return null;
     }
 
     const userInfo = {
       username: username
+    }
+
+    return collection?.findOne(userInfo);
+  },
+
+  getUserByEmail: async function (email: string) {
+    if (!email || email === "") {
+      return null;
+    }
+
+    const userInfo = {
+      email: email
     }
 
     return collection?.findOne(userInfo);
